@@ -25,6 +25,7 @@ public:
         display_users();
         add_user();
 
+        window_layout->addWidget(title_bar());
         window_layout->addWidget(cards_widget);
         window_layout->addLayout(add_user_layout);
         window_widget->setLayout(window_layout);
@@ -98,7 +99,7 @@ public:
         hlayout->addWidget(surname);
         hlayout->addWidget(name);
         hlayout->addWidget(email);
-        hlayout->addWidget(id_badge);-
+        hlayout->addWidget(id_badge);
         hlayout->addWidget(add_button);
 
 
@@ -109,6 +110,39 @@ public:
 
         add_user_layout->addWidget(title);
         add_user_layout->addLayout(hlayout);
+    }
+
+    static QWidget * title_bar(){
+        auto *title = new QLabel("Tableau de bord");
+        title->setFont(QFont("Montserrat", 36, QFont::Bold));
+
+        auto *logo = new QPixmap(":/logo.png");
+        logo->setMask(logo->createMaskFromColor(QColor(255, 255, 255)));
+        auto *logo_label = new QLabel();
+        logo_label->setPixmap(*logo);
+
+        auto *search_bar = new QLineEdit();
+        auto *search_icon = new QPixmap(":/search.png");
+        auto *search_icon_label = new QLabel();
+        logo_label->setPixmap(search_icon->scaled(18,18));
+
+        auto *search_layout = new QHBoxLayout();
+        search_layout->addWidget(search_bar);
+        search_layout->addWidget(search_icon_label);
+
+        search_bar->setPlaceholderText("Rechercher");
+
+        auto *title_layout = new QHBoxLayout();
+        title_layout->addWidget(title);
+        title_layout->addWidget(logo_label);
+        title_layout->addLayout(search_layout);
+
+        auto *title_widget = new QWidget();
+        title_widget->setFixedHeight(50);
+        title_widget->setStyleSheet("background-color: #1C2837;");
+        title_widget->setLayout(title_layout);
+
+        return  title_widget;
     }
 };
 

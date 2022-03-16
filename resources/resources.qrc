@@ -3,6 +3,7 @@
         <file alias="icon.png">images/icons/IE.png</file>
         <file alias="bg.png">images/bg.png</file>
         <file alias="logo.png">images/logo/logo.png</file>
+        <file alias="search.png">images/icons/search.png</file>
 
         <file alias="style.css">css/style.qss</file>
         <file alias="envfile">.env</file>

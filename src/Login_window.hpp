@@ -27,14 +27,13 @@ class Login_window: public QWidget {
         QHBoxLayout *button_layout{};
         QPixmap *logo{};
         QLabel *logo_label{};
-        bool is_logged_in{};
 
         /**
          * Constructor
          * @param parent
          * @return nothing
          */
-        explicit Login_window(QWidget *parent = nullptr){
+        explicit Login_window(){
             this->setWindowTitle("Login");
             this->resize(QApplication::screens()[0]->size());
             this->setWindowIcon(QIcon(":/icons/IE.png"));
@@ -58,19 +57,22 @@ class Login_window: public QWidget {
 
             username_input = new QLineEdit();
             username_input->setPlaceholderText("Username");
+            username_input->setFont(QFont("Montserrat", 18, QFont::Bold));
+
             // set the size of the username input
             username_input->setFixedSize(0.66*logo_label->width(), 49);
 
 
             password_input = new QLineEdit();
             password_input->setPlaceholderText("Password");
+            password_input->setFont(QFont("Montserrat", 18, QFont::Bold));
             password_input->setEchoMode(QLineEdit::Password);
             password_input->setFixedSize(0.66*logo_label->width(), 49);
 
-            login_button = new QPushButton("Login");
-            login_button->setFixedSize(this->width()/15, 49);
+            login_button = new QPushButton("Connexion");
+            login_button->setFixedSize(this->width()/13, 49);
             login_button->setObjectName("login-button");
-            cancel_button = new QPushButton("Cancel");
+            cancel_button = new QPushButton("Annuler");
             cancel_button->setFixedSize(this->width()/15, 49);
             cancel_button->setObjectName("quit-button");
         }
@@ -83,8 +85,8 @@ class Login_window: public QWidget {
          */
         void layout_setup() {
             button_layout = new QHBoxLayout();
-            button_layout->addWidget(login_button);
             button_layout->addWidget(cancel_button);
+            button_layout->addWidget(login_button);
             button_layout->setSpacing(122);
 
             v_layout = new QVBoxLayout();
@@ -96,7 +98,6 @@ class Login_window: public QWidget {
 
             v_layout->setSpacing(60);
             v_layout->setAlignment(Qt::AlignCenter);
-
             v_layout->setObjectName("v-layout");
 
             this->setLayout(v_layout);
@@ -161,7 +162,6 @@ class Login_window: public QWidget {
 
             if(Login_handler::sql_request(username, password)){
                 new Pannel_window();
-                is_logged_in = true;
                 this->close();
             }
             else{
@@ -184,21 +184,6 @@ class Login_window: public QWidget {
             username_input->clear();
             password_input->clear();
         }
-
-    void closeEvent(QCloseEvent *event) override {
-        if(is_logged_in)return;
-        QMessageBox::StandardButton resBtn = QMessageBox::question(
-                nullptr,
-                "Quit",
-                "Are you sure?",
-                QMessageBox::No | QMessageBox::Yes,
-                QMessageBox::Yes
-        );
-
-        if (resBtn == QMessageBox::Yes)
-             event->accept();
-        else event->ignore();
-    }
 
     void keyPressEvent(QKeyEvent *e) override {
         if(e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
