@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(project_admin_interface)
+project(powa_bonk)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_AUTOMOC ON)
@@ -64,7 +64,7 @@ else()
 endif()
 
 add_executable(
-        project_admin_interface
+        powa_bonk
         main.cpp
         resources/resources.qrc
         src/Login_window.hpp
@@ -75,7 +75,7 @@ add_executable(
         test/test_sql.hpp src/Pannel_window.hpp)
 
 target_link_libraries(
-        project_admin_interface
+        powa_bonk
         Qt::Core
         Qt::Gui
         Qt6::Sql
