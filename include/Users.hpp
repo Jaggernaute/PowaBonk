@@ -49,93 +49,28 @@ class Users {
             return list;
         };
 
-        static QList<Users> get_user_by_name(const QString& name) {
+        static QList<Users> search_user(const QString& search_string) {
             QList<Users> list;
             SQL_API::instance();
             QSqlQuery query;
 
-            query.prepare("SELECT * FROM utilisateurs WHERE name = :name");
-            query.bindValue(":name", name);
+            query.prepare("CALL search_user(:search_string)");
+            query.bindValue(":search_string", search_string);
             query.exec();
             query.next();
 
             Users user(
-                    query.value("id").toInt(),
-                    query.value("prenom").toString(),
-                    query.value("nom").toString(),
-                    query.value("mail").toString(),
-                    query.value("idBadge").toString(),
-                    query.value("derniere-res").toDateTime()
+                        query.value("id").toInt(),
+                        query.value("prenom").toString(),
+                        query.value("nom").toString(),
+                        query.value("mail").toString(),
+                        query.value("idBadge").toString(),
+                        query.value("derniere-res").toDateTime()
                         );
             list.append(user);
             return list;
         };
 
-        static QList<Users> get_user_by_email(const QString& email) {
-            QList<Users> list;
-            SQL_API::instance();
-            QSqlQuery query;
-
-            query.prepare("SELECT * FROM utilisateurs WHERE email = :email");
-            query.bindValue(":email", email);
-            query.exec();
-            query.next();
-
-            Users user(
-                    query.value("id").toInt(),
-                    query.value("prenom").toString(),
-                    query.value("nom").toString(),
-                    query.value("mail").toString(),
-                    query.value("idBadge").toString(),
-                    query.value("derniere-res").toDateTime()
-                        );
-            list.append(user);
-            return list;
-        };
-
-        static QList<Users> get_user_by_id_badge(const QString& id_badge) {
-            QList<Users> list;
-            SQL_API::instance();
-            QSqlQuery query;
-
-            query.prepare("SELECT * FROM utilisateurs WHERE id_badge = :id_badge");
-            query.bindValue(":id_badge", id_badge);
-            query.exec();
-            query.next();
-
-            Users user(
-                    query.value("id").toInt(),
-                    query.value("prenom").toString(),
-                    query.value("nom").toString(),
-                    query.value("mail").toString(),
-                    query.value("idBadge").toString(),
-                    query.value("derniere-res").toDateTime()
-                        );
-            list.append(user);
-            return list;
-        };
-
-        static QList<Users> get_user_by_last_reservation(const QDateTime& last_reservation) {
-            QList<Users> list;
-            SQL_API::instance();
-            QSqlQuery query;
-
-            query.prepare("SELECT * FROM utilisateurs WHERE last_reservation = :last_reservation");
-            query.bindValue(":last_reservation", last_reservation);
-            query.exec();
-            query.next();
-
-            Users user(
-                    query.value("id").toInt(),
-                    query.value("prenom").toString(),
-                    query.value("nom").toString(),
-                    query.value("mail").toString(),
-                    query.value("idBadge").toString(),
-                    query.value("derniere-res").toDateTime()
-                        );
-            list.append(user);
-            return list;
-        };
 
         [[nodiscard]] int get_id() const { return id; };
         [[nodiscard]] QString get_name() const { return name; };

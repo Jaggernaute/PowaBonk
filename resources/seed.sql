@@ -34,3 +34,13 @@ CREATE TABLE planing
         FOREIGN KEY (id)
             REFERENCES utilisateurs (id)
 );
+
+create
+    definer = root@localhost procedure search_everywhere(IN search_string varchar(255))
+begin
+    select * from utilisateurs where `nom` like search_string
+                                  or `prenom` like search_string
+                                  or `mail` like search_string
+                                  or `password` like search_string
+                                  or `derniere-res` like search_string;
+end;

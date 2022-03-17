@@ -13,7 +13,7 @@
 #include <QCloseEvent>
 
 #include "../include/Login_handler.hpp"
-#include "Pannel_window.hpp"
+#include "Dashboard.hpp"
 
 class Login_window: public QWidget {
     Q_OBJECT
@@ -161,7 +161,7 @@ class Login_window: public QWidget {
             QString password = password_input->text();
 
             if(Login_handler::sql_request(username, password)){
-                new Pannel_window();
+                new Dashboard();
                 this->close();
             }
             else{

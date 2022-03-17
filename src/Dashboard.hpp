@@ -9,7 +9,7 @@
 #include <QApplication>
 #include "../include/Users.hpp"
 
-class Pannel_window: public QMainWindow {
+class Dashboard: public QMainWindow {
     QMainWindow *window;
     QVBoxLayout *window_layout = new QVBoxLayout();
     QGridLayout *cards_layout = new QGridLayout();
@@ -18,7 +18,7 @@ class Pannel_window: public QMainWindow {
     QWidget *window_widget = new QWidget();
 
 public:
-    Pannel_window(){
+    Dashboard(){
         window = new QMainWindow();
         window->setWindowTitle("Liste utilisateurs");
         window->resize(QApplication::screens()[0]->size());
@@ -50,7 +50,7 @@ public:
 
             auto user_layout = new QVBoxLayout();
 
-            auto user_name = new QLabel(user.get_name());
+            auto user_name = new QLabel(user.get_name() + " " + user.get_surname());
             auto user_id = new QLabel("#" + QString::number(user.get_id()));
             auto user_email = new QLabel(user.get_email());
             auto user_id_badge = new QLabel(user.get_id_badge());
@@ -126,9 +126,19 @@ public:
         auto *search_icon_label = new QLabel();
         logo_label->setPixmap(search_icon->scaled(18,18));
 
+        auto *search_button = new QPushButton("Rechercher");
+        search_button->setStyleSheet("background-color: #1C2837; color: #F5F6F7;");
+        search_button->setFixedSize(100,50);
+        search_button->setFont(QFont("Arial", 12));
+        search_button->setCursor(Qt::PointingHandCursor);
+        search_button->setFocusPolicy(Qt::NoFocus);
+        search_button->setFlat(true);
+
+
         auto *search_layout = new QHBoxLayout();
         search_layout->addWidget(search_bar);
         search_layout->addWidget(search_icon_label);
+        search_layout->addWidget(search_button);
 
         search_bar->setPlaceholderText("Rechercher");
 
@@ -143,6 +153,10 @@ public:
         title_widget->setLayout(title_layout);
 
         return  title_widget;
+    }
+
+    void set_connections(){
+
     }
 };
 

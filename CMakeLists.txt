@@ -72,7 +72,7 @@ add_executable(
         include/Login_handler.hpp
         include/Users.hpp
         test/test_main.hpp
-        test/test_sql.hpp src/Pannel_window.hpp)
+        test/test_sql.hpp src/Dashboard.hpp)
 
 target_link_libraries(
         powa_bonk
