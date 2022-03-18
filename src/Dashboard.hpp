@@ -8,6 +8,7 @@
 #include <QMainWindow>
 #include <QApplication>
 #include "../include/Users.hpp"
+#include "../include/statement.hpp"
 
 class Dashboard: public QMainWindow {
     QMainWindow *window;
@@ -30,12 +31,14 @@ public:
         window_layout->addLayout(add_user_layout);
         window_widget->setLayout(window_layout);
 
+        set_connections();
+
         window->setCentralWidget(window_widget);
         window->show();
     }
 
     void display_users() {
-        auto user_list = Users::get_user(12);
+        auto user_list = get_user(12);
         int row = 0;
         int col = 0;
         for(const auto& user: user_list){
@@ -112,7 +115,9 @@ public:
         add_user_layout->addLayout(hlayout);
     }
 
-    static QWidget * title_bar(){
+    QPushButton *search_button = new QPushButton("Rechercher");
+    QLineEdit *search_bar = new QLineEdit();
+     QWidget * title_bar(){
         auto *title = new QLabel("Tableau de bord");
         title->setFont(QFont("Montserrat", 36, QFont::Bold));
 
@@ -121,12 +126,12 @@ public:
         auto *logo_label = new QLabel();
         logo_label->setPixmap(*logo);
 
-        auto *search_bar = new QLineEdit();
+        search_bar = new QLineEdit();
         auto *search_icon = new QPixmap(":/search.png");
         auto *search_icon_label = new QLabel();
         logo_label->setPixmap(search_icon->scaled(18,18));
 
-        auto *search_button = new QPushButton("Rechercher");
+        search_button->setText("Rechercher");
         search_button->setStyleSheet("background-color: #1C2837; color: #F5F6F7;");
         search_button->setFixedSize(100,50);
         search_button->setFont(QFont("Arial", 12));
@@ -156,8 +161,16 @@ public:
     }
 
     void set_connections(){
-
-    }
+        connect(this->search_button, &QPushButton::clicked,  [this]{
+            for(const Users& u : search_user(search_bar->text()).toList()){
+                qDebug() << u.get_name();
+                qDebug() << u.get_surname();
+                qDebug() << u.get_email();
+                qDebug() << u.get_id_badge();
+                qDebug() << u.get_id();
+                qDebug() << u.get_last_reservation();
+            }
+        });}
 };
 
 #endif //PROJECT_ADMIN_INTERFACE_PANNEL_WINDOW_HPP

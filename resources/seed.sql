@@ -9,6 +9,7 @@ CREATE TABLE admins
     CONSTRAINT admins_username_uindex
         UNIQUE (username)
 );
+
 CREATE TABLE utilisateurs
 (
     id             INT          AUTO_INCREMENT
@@ -24,6 +25,7 @@ CREATE TABLE utilisateurs
     CONSTRAINT utilisateurss_mail_uindex
         UNIQUE (mail)
 );
+
 CREATE TABLE planing
 (
     id             INT     AUTO_INCREMENT
@@ -35,12 +37,12 @@ CREATE TABLE planing
             REFERENCES utilisateurs (id)
 );
 
-create
-    definer = root@localhost procedure search_everywhere(IN search_string varchar(255))
-begin
-    select * from utilisateurs where `nom` like search_string
-                                  or `prenom` like search_string
-                                  or `mail` like search_string
-                                  or `password` like search_string
-                                  or `derniere-res` like search_string;
-end;
+create table creneau
+(
+    id          INT          AUTO_INCREMENT,
+    jour        DATE         NULL,
+    nom_creneau VARCHAR(255) NULL,
+    reserver    TINYINT      NULL,
+    CONSTRAINT creneau_pk
+        PRIMARY KEY (id)
+);
