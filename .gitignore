@@ -12,6 +12,10 @@ CTestTestfile.cmake
 _deps
 resources/.env
 .idea
+.qt
+powa_bonk
+
 # Project exclude paths
 /cmake-build-debug/
 /cmake-build-release/
+/powa_bonk_autogen
