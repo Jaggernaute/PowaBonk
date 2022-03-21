@@ -39,65 +39,69 @@
   <summary>Sommaire :</summary>
   <ol>
     <li>
-      <a href="#about-the-project">A propos du projet</a>
+      <a href="#about-the-project">About the project</a>
       <ul>
-        <li><a href="#built-with">Technologies utilisées</a></li>
+        <li><a href="#built-with">Built with</a></li>
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Pour commencer</a>
+      <a href="#getting-started">Getting started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequis</a></li>
+        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Utilisation</a></li>
+    <li><a href="#usage">USage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contribuer</a></li>
+    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">Licence</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Remerciements</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## A propos du projet
+## About the project
+
+PowaBonk is a powerful system for reserving an electric car charging station.
+This repository is only the user management part of the system.
+It's built with [C++](https://en.wikipedia.org/wiki/C%2B%2B) and [Qt](https://www.qt.io/),
+to be fast and cross-platform.
 
 <img src="blobs/fullscreen-app.png" alt="Logo" height="300">
 
-
-
-
-### Technologies utilisées
+### Technologies used
 
 * [Qt](https://www.qt.io)
 * [CMake](https://cmake.org)
 * [ninja](https://ninja-build.org/manual.html#_introduction)
 * [gcc](https://gcc.gnu.org)
-
-
-
-
+* [clang](https://clang.llvm.org)
 
 <!-- GETTING STARTED -->
-## Pour commencer
+## Getting started
 
-Pour compiler l'application depuis le code source il vous suffit de 
-suivre les instructions ci-dessous.
+In order to compile and run the application, you need to have the following:
+
+* [Qt](https://www.qt.io)
+* [CMake](https://cmake.org)
+* [gcc](https://gcc.gnu.org)
 
 ### Prerequis
 
-Liste des prerequis pour et instructions simple pour les installer 
-(vous trouverez des instructions plus detailées sur le site officiel).
+List of prerequisites needed to compile and run the application.  
+For more information, 
+go take a look to the official site of the technology you'll find greater details on
+how to install and run it.
 
 #### Linux
 #### Arch Linux:
   ```sh
   pacman -S qt6-base-git
   ```
-  [Pour en savoir plus](https://wiki.archlinux.org/title/qt) 
+  [learn more](https://wiki.archlinux.org/title/qt) 
 
 #### Debian/Ubuntu:
   ```sh
@@ -115,25 +119,24 @@ Liste des prerequis pour et instructions simple pour les installer
   ./configure
   cmake --build . --parallel
   ```
-[Pour en savoir plus](https://wiki.debian.org/qt)  
-[pourquoi c'est si compliqué](https://askubuntu.com/a/1341877)
+[learn more](https://wiki.debian.org/qt)  
+[why so complicated](https://askubuntu.com/a/1341877)
+
 ### Installation
 
-1. Clonez le repository sur votre machine.
+1. Clone the repository on your machine.
    ```sh
    git clone https://github.com/Jaggernaute/PowaBonk.git
    ```
-2. Dans le dossier `PowaBonk`, executez la commande suivante:
+2. In the `PowaBonk` directory, run CMake :
    ```sh
    cmake CmakeLists.txt
    ```
-3. Compilez l'application avec la commande suivante:
+3. Copile the application with :
    ```js
    make
    ```
-
-
-
+   <!-- TODO: add the database / server deployement instructions  and move everything to a DEPLOYEMENT.md-->
 
 <!-- USAGE EXAMPLES -->
 ## Usage
