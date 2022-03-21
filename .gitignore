@@ -14,6 +14,7 @@ resources/.env
 .idea
 .qt
 powa_bonk
+powa_bonk_autogen
 
 # Project exclude paths
 /cmake-build-debug/

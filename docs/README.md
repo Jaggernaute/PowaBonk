@@ -13,7 +13,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Jaggernaute/PowaBonk">
-    <img src="blobs/logo.png" alt="Logo" height="80">
+    <img src="../include/blobs/logo.png" alt="Logo" height="80">
   </a>
 
 <h3 align="center">Powa Bonk</h3>
@@ -65,7 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## A propos du projet
 
-<img src="blobs/fullscreen-app.png" alt="Logo" height="300">
+<img src="../include/blobs/fullscreen-app.png" alt="Logo" height="300">
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
