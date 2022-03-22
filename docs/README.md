@@ -19,16 +19,16 @@
 <h3 align="center">Powa Bonk</h3>
 
   <p align="center">
-    Systeme de reservation de borne de recharge pour voiture electriques.
+    Powerful system for reserving an electric car charging station.
     <br />
     <a href="https://github.com/Jaggernaute/PowaBonk"><strong>Documentation »</strong></a>
     <br />
     <br />
     <a href="https://github.com/Jaggernaute/PowaBonk">Demo</a>
     ·
-    <a href="https://github.com/Jaggernaute/PowaBonk/issues">Rapporter un bug</a>
+    <a href="https://github.com/Jaggernaute/PowaBonk/issues">Report bug</a>
     ·
-    <a href="https://github.com/Jaggernaute/PowaBonk/issues">Demander un changement</a>
+    <a href="https://github.com/Jaggernaute/PowaBonk/issues">Request a feature</a>
   </p>
 </div>
 
