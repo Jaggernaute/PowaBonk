@@ -38,3 +38,10 @@ QDialog {
 #v-layout {
     background-color: #0C0E11;
 }
+
+QMainWindow {
+    background: #151A22;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-size: 12pt;
+}

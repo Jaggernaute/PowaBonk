@@ -26,6 +26,9 @@ public:
         display_users();
         add_user();
 
+        window_widget->setStyleSheet("color: #ffffff;");
+
+
         window_layout->addWidget(title_bar());
         window_layout->addWidget(cards_widget);
         window_layout->addLayout(add_user_layout);
@@ -81,12 +84,23 @@ public:
 
         auto name = new QLineEdit();
         name->setPlaceholderText("Prenom");
+        name->setStyleSheet("background-color: #1C2535;");
+        name->setStyleSheet("color: #9FA0B1");
+
         auto surname = new QLineEdit();
         surname->setPlaceholderText("Nom");
+        surname->setStyleSheet("background-color: #1C2535;");
+        surname->setStyleSheet("color: #9FA0B1");
+
         auto email = new QLineEdit();
         email->setPlaceholderText("Email");
+        email->setStyleSheet("background-color: #1C2535;");
+        email->setStyleSheet("color: #9FA0B1");
+
         auto id_badge = new QLineEdit();
         id_badge->setPlaceholderText("Badge");
+        id_badge->setStyleSheet("background-color: #1C2535;");
+        id_badge->setStyleSheet("color: #9FA0B1");
 
         auto add_button = new QPushButton("Ajouter");
         add_button->setStyleSheet("background-color: #1C2837; color: #F5F6F7;");
@@ -117,7 +131,8 @@ public:
 
     QPushButton *search_button = new QPushButton("Rechercher");
     QLineEdit *search_bar = new QLineEdit();
-     QWidget * title_bar(){
+
+    QWidget * title_bar(){
         auto *title = new QLabel("Tableau de bord");
         title->setFont(QFont("Montserrat", 36, QFont::Bold));
 
@@ -147,14 +162,13 @@ public:
 
         search_bar->setPlaceholderText("Rechercher");
 
-        auto *title_layout = new QHBoxLayout();
-        title_layout->addWidget(title);
-        title_layout->addWidget(logo_label);
-        title_layout->addLayout(search_layout);
+        auto *title_layout = new QGridLayout();
+        title_layout->addWidget(title,0 ,0);
+        title_layout->addWidget(logo_label, 0, 2, 2, 1);
+        title_layout->addLayout(search_layout, 0, 4);
 
         auto *title_widget = new QWidget();
         title_widget->setFixedHeight(50);
-        title_widget->setStyleSheet("background-color: #1C2837;");
         title_widget->setLayout(title_layout);
 
         return  title_widget;
@@ -162,7 +176,7 @@ public:
 
     void set_connections(){
         connect(this->search_button, &QPushButton::clicked,  [this]{
-            for(const Users& u : search_user(search_bar->text()).toList()){
+            for(const auto& u : search_user(search_bar->text()).toList()){
                 qDebug() << u.get_name();
                 qDebug() << u.get_surname();
                 qDebug() << u.get_email();
@@ -170,7 +184,8 @@ public:
                 qDebug() << u.get_id();
                 qDebug() << u.get_last_reservation();
             }
-        });}
+        });
+    }
 };
 
-#endif //PROJECT_ADMIN_INTERFACE_PANNEL_WINDOW_HPP
+#endif
