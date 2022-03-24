@@ -7,7 +7,7 @@
 int main(int argc, char *argv[]) {
 
     //run tests
-    test_main::all_tests();
+    //test_main::all_tests();
 
     QApplication a(argc, argv);
 
