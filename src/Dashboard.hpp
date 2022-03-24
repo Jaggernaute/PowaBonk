@@ -50,7 +50,7 @@ public:
                 col = 0;
                 row++;
             }
-            if ((row == 3) && (col <= 4)) {
+            if (row == 3) {
                 return;
             }
 
