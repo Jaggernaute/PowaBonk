@@ -18,6 +18,8 @@ default_target: all
 # Build the sources with cmake.
 
 build_sources:
+	@
+	@ # Loading progressbar
 	@ echo -e "${ARROW} Building ..."
 	cmake CMakelists.txt -B ${build_path}
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] CMake build finished"
@@ -27,7 +29,7 @@ build_sources:
 # Compile the Cmake generated MOC files.
 
 compile:
-	@ echo -e "${ARROW} Compiling..."
+	@ echo -e "\n${ARROW} Compiling..."
 	make -C ${build_path}
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Compiling finished"
 
@@ -36,7 +38,7 @@ compile:
 # Compile the Cmake generated MOC files (with minimal logs).
 
 compile_quiet:
-	@ echo -e "${ARROW} Compiling..."
+	@ echo -e "\n${ARROW} Compiling..."
 	make -C ${build_path} -s
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Compiling finished"
 
@@ -44,7 +46,7 @@ compile_quiet:
 #=============================================================================
 # Run the app (from the newly created binary)
 run:
-	@ echo -e "${ARROW} Running..."
+	@ echo -e "\n${ARROW} Running..."
 	./${build_path}powa_bonk
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Running"
 
