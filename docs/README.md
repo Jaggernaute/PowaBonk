@@ -193,28 +193,13 @@ Before contributing code, please read the :
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) -  contact@jaggernaute.com@ .com
-
-Project Link: [https://github.com/Jaggernaute/PowaBonk](https://github.com/Jaggernaute/PowaBonk)
-
-
+Distributed under the GNU License. See `LICENSE.txt` for more information.
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
-
+* [Sigmanificient]() For his precious help with the design of the UI.
 
 
 
