@@ -12,10 +12,14 @@ static QList<Users> search_user(const QString& search_string) {
     SQL_API::instance();
     QSqlQuery query;
 
-    query.prepare("select * from utilisateurs where `nom`          like :search_string\n"
-              "                                         or `prenom`       like :search_string\n"
-              "                                         or `mail`         like :search_string\n"
-              "                                         or `idBadge`      like :search_string;");
+    QFile file(":/search-user.sql");
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening file";
+    }
+    QTextStream in(&file);
+    QString query_string = in.readAll();
+    query.prepare(query_string);
+
     query.bindValue(":search_string", search_string);
     query.exec();
     query.next();
@@ -37,8 +41,15 @@ static QList<Users> get_user(int id) {
     SQL_API::instance();
     QSqlQuery query;
 
+    QFile file(":/select-id.sql");
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening file";
+    }
+    QTextStream in(&file);
+    QString query_string = in.readAll();
+
     for(int i = 1; i <= id; i++) {
-        query.prepare("SELECT * FROM utilisateurs WHERE id = :id");
+        query.prepare(query_string);
         query.bindValue(":id", i);
         query.exec();
         query.next();
@@ -54,6 +65,29 @@ static QList<Users> get_user(int id) {
         list.append(user);
     }
     return list;
+};
+
+static bool connection(const QString& username, const QString& password) {
+    SQL_API::instance();
+    QSqlQuery query;
+
+    QFile file(":/connection.sql");
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening file";
+        return false;
+    }
+    QTextStream in(&file);
+    QString query_string = in.readAll();
+    query.prepare(query_string);
+    query.bindValue(":username", username);
+    query.bindValue(":password", password);
+    query.exec();
+    query.next();
+
+    if(query.value(0).toInt() == 0) {
+        return false;
+    }
+    return true;
 };
 
 #endif //POWA_BONK_STATEMENT_HPP

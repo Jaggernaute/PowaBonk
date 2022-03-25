@@ -1,0 +1,1 @@
+SELECT EXISTS (SELECT * FROM admins WHERE username = :username AND password = :password);
