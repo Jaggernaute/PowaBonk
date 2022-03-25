@@ -147,22 +147,6 @@ You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/Jaggernaute/PowaBonk/issues) for a full list of proposed features (and known issues).
-
-
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
