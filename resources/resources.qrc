@@ -13,8 +13,8 @@
         <file alias="envfile">.env</file>
 
         <!-- sql scripts -->
-        <file alias="connection.sql">../SQL/connection.sql</file>
-        <file alias="select-id.sql">../SQL/select-by-id.sql</file>
-        <file alias="search-user.sql">../SQL/search-user.sql</file>
+        <file alias="connection.sql">../sql/connection.sql</file>
+        <file alias="select-id.sql">../sql/select-by-id.sql</file>
+        <file alias="search-user.sql">../sql/search-user.sql</file>
     </qresource>
 </RCC>
