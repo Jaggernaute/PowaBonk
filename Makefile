@@ -18,7 +18,9 @@ default_target: all
 # Build the sources with cmake.
 
 build_sources:
-	@
+	@ if [ ! -d ${build_path} ]; then\
+	   mkdir -p ${build_path};\
+	fi
 	@ # Loading progressbar
 	@ echo -e "${ARROW} Building ..."
 	cmake CMakelists.txt -B ${build_path}
