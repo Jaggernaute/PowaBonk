@@ -150,7 +150,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTRIBUTING -->
 ## Contributing
 
-see the code of conduct [here](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/CODE_OF_CONDUCT.md)
+See the code of conduct [here](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/CODE_OF_CONDUCT.md) and read 
+the gidelines [here](https://www.github.com/Jaggernaute/PowaBonk/tree/master/docs/CONTRIBUTING.md).
+
 
 <!-- LICENSE -->
 ## License
@@ -161,7 +163,7 @@ Distributed under the GNU License. See `LICENSE.txt` (available [here](https://w
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Sigmanificient](https://github.com/Sigmanificient) For his precious help with the design of the UI.
+See all the people that contributed to this project [here](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/AUTHORS.md)
 
 
 

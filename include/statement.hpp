@@ -11,13 +11,15 @@ static QList<Users> search_user(const QString& search_string) {
     QList<Users> list;
     SQL_API::instance();
     QSqlQuery query;
+    QString query_string;
 
     QFile file(":/search-user.sql");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Error opening file";
     }
-    QTextStream in(&file);
-    QString query_string = in.readAll();
+
+    query_string = file.readAll();
+
     query.prepare(query_string);
 
     query.bindValue(":search_string", search_string);
@@ -40,13 +42,15 @@ static QList<Users> get_user(int id) {
     QList<Users> list;
     SQL_API::instance();
     QSqlQuery query;
+    QString query_string;
 
     QFile file(":/select-id.sql");
+
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Error opening file";
     }
-    QTextStream in(&file);
-    QString query_string = in.readAll();
+
+    query_string = file.readAll();
 
     for(int i = 1; i <= id; i++) {
         query.prepare(query_string);
