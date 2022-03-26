@@ -47,7 +47,7 @@
     <li>
       <a href="#getting-started">Getting started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#requirements">Requirements</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -89,7 +89,7 @@ In order to compile and run the application, you need to have the following:
 * [CMake](https://cmake.org)
 * [gcc](https://gcc.gnu.org)
 
-### Prerequis
+### Requirements
 
 List of prerequisites needed to compile and run the application.  
 For more information, 
@@ -150,40 +150,18 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Before contributing code, please read the :
-
-1. please respect the architecture of the project :
-    ```
-    .
-    |--include
-    |--libs
-    |--ressources
-    |  |--css
-    |  |--images
-    |  `--.env
-    |--src
-    `--tests
-    ```
-2. respect the cpp [style guide](https://google.github.io/styleguide/cppguide.html)
-3. try to avoid CLang tidy warnings.
-4. try to avoid using Qt's non-standard features.
-5. use c++23 or higher(when it'll be released).
-6. document your code with docstrings.
-7. use the [CMake](https://cmake.org) build system.
-8. do not push build files to the repository.
-9. do not push code to the master branch, but to a branch named after the features you're adding.
-
+see the code of conduct [here](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/CODE_OF_CONDUCT.md)
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the GNU License. See `LICENSE.txt` for more information.
+Distributed under the GNU License. See `LICENSE.txt` (available [here](https://www.github.com/Jaggernaute/PowaBonk/blob/master/LICENSE)) ) for more information.
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Sigmanificient]() For his precious help with the design of the UI.
+* [Sigmanificient](https://github.com/Sigmanificient) For his precious help with the design of the UI.
 
 
 
