@@ -1,4 +1,4 @@
-select * from utilisateurs where `nom` like :search_string
-                              or `prenom` like :search_string
-                              or `mail` like :search_string
-                              or `idBadge` like :search_string;
+SELECT * FROM utilisateurs WHERE `nom`     LIKE :search_string
+                              OR `prenom`  LIKE :search_string
+                              OR `mail`    LIKE :search_string
+                              OR `idBadge` LIKE :search_string;
