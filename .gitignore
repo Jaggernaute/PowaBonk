@@ -16,8 +16,9 @@ powa_bonk
 powa_bonk_autogen
 
 # Project exclude paths
-/cmake-build-debug/
-/cmake-build-release/
+/cmake-build-debug
+/cmake-build-release
+cmake-build-debug-coverage
 /powa_bonk_autogen
 /build
 /test/tests_template.hpp

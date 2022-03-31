@@ -18,7 +18,8 @@ private:
 
 
 private slots:
-    static void initTestCase() {
+
+    [[maybe_unused]] static void initTestCase() {
         qDebug("\n"
                      "██╗  ██╗ █████╗ ███████╗██╗  ██╗     ████████╗███████╗███████╗████████╗███████╗\n"
                      "██║  ██║██╔══██╗██╔════╝██║  ██║     ╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔════╝\n"
@@ -29,13 +30,16 @@ private slots:
                      "");
     }
 
-    static void string_hashing_Sha512() {
+    [[maybe_unused]] static void string_hashing_Sha512() {
         QString test_string = "Hello World!";
         QString hash = QCryptographicHash::hash(
                 test_string.toUtf8(),QCryptographicHash::Sha512
         ).toHex();
 
-        QVERIFY(hash == "861844d6704e8573fec34d967e20bcfef3d424cf48be04e6dc08f2bd58c729743371015ead891cc3cf1c9d34b49264b510751b1ff9e537937bc46b5d6ff4ecc8");
+        QVERIFY(hash == "861844d6704e8573fec34d967e20bcfef3d"
+                        "424cf48be04e6dc08f2bd58c72974337101"
+                        "5ead891cc3cf1c9d34b49264b510751b1ff"
+                        "9e537937bc46b5d6ff4ecc8");
     }
 };
 
