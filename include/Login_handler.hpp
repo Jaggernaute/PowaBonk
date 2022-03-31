@@ -6,6 +6,7 @@
 #include <QCryptographicHash>
 #include "statement.hpp"
 
+#pragma once
 
 class Login_handler {
 public:

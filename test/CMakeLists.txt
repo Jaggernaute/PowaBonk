@@ -17,7 +17,18 @@ set(CMAKE_AUTOMOC ON)
 
 enable_testing(true)
 
-add_executable(test_main test_main.hpp)
-add_test(NAME test_main COMMAND test_main)
+add_executable(
+        sql_tests
+        sql_tests.hpp
+        resources/resources.qrc
+)
+add_test(NAME sql_tests COMMAND sql_tests)
+target_link_libraries(sql_tests PRIVATE Qt6::Test)
 
-target_link_libraries(test_main PRIVATE Qt6::Test)
+add_executable(
+        hash_tests
+        hash_tests.hpp
+        resources/resources.qrc
+)
+add_test(NAME hash_tests COMMAND hash_tests)
+target_link_libraries(hash_tests PRIVATE Qt6::Test)

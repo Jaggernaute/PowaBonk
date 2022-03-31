@@ -28,7 +28,6 @@ public:
 
         window_widget->setStyleSheet("color: #ffffff;");
 
-
         window_layout->addWidget(title_bar());
         window_layout->addWidget(cards_widget);
         window_layout->addLayout(add_user_layout);
@@ -40,19 +39,24 @@ public:
         window->show();
     }
 
+    /**
+     * @brief display_users
+     * Display all users in the database
+     * in a grid of cards
+     */
     void display_users() {
-        auto user_list = get_user(12);
         int row = 0;
         int col = 0;
+        int max_row = 3;
+        int max_col = 4;
+        auto user_list = get_user(max_row * max_col);
         for(const auto& user: user_list){
 
-            if (col == 4) {
+            if (col == max_col) {
                 col = 0;
                 row++;
             }
-            if (row == 3) {
-                return;
-            }
+            if (row == max_row) return;
 
             auto user_layout = new QVBoxLayout();
 
@@ -104,13 +108,8 @@ public:
 
         auto add_button = new QPushButton("Ajouter");
         add_button->setStyleSheet("background-color: #1C2837; color: #F5F6F7;");
-        add_button->setFixedSize(100,50);
-        add_button->setFont(QFont("Arial", 12));
-        add_button->setCursor(Qt::PointingHandCursor);
-        add_button->setFocusPolicy(Qt::NoFocus);
-        add_button->setFlat(true);
-        add_button->setIcon(QIcon(":/icons/add.png"));
-        add_button->setIconSize(QSize(20,20));
+        add_button->setFixedSize(125,50);
+        add_button->setFont(QFont("Montserrat", 16));
         add_button->setToolTip("Ajouter un utilisateur");
 
         hlayout->addWidget(surname);

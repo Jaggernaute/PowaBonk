@@ -20,3 +20,5 @@ powa_bonk_autogen
 /cmake-build-release/
 /powa_bonk_autogen
 /build
+/test/tests_template.hpp
+/test/resources/.env

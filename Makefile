@@ -8,6 +8,7 @@ CL_GREEN := \033[32m
 CL_RESET := \033[39m
 
 
+
 #=============================================================================
 # Default target executed when no arguments are given to make.
 
@@ -18,10 +19,10 @@ default_target: all
 # Build the sources with cmake.
 
 build_sources:
+
 	@ if [ ! -d ${build_path} ]; then\
 	   mkdir -p ${build_path};\
 	fi
-	@ # Loading progressbar
 	@ echo -e "${ARROW} Building ..."
 	cmake CMakelists.txt -B ${build_path}
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] CMake build finished"
@@ -32,6 +33,9 @@ build_sources:
 
 compile:
 	@ echo -e "\n${ARROW} Compiling..."
+	chmod +x ./resources/scripts/progress-bar.sh
+	sh resources/scripts/progress-bar.sh
+
 	make -C ${build_path}
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Compiling finished"
 

@@ -1,0 +1,47 @@
+QWidget{
+
+    }
+
+QLineEdit {
+    border: none;
+    background: #514869;
+    color: #f0ffff;
+    border-radius: 4px;
+    padding-left: 10px;
+    font-size: 12pt;
+}
+
+QPushButton{
+    background: #0BB4EA;
+    color: #f0ffff;
+    border-radius: 4px;
+    height: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 12pt;
+}
+
+QPushButton#quit-button {
+    background: #DA3B3B;
+}
+
+QPushButton#login-button {
+    background: #618DFF;
+}
+
+QDialog {
+    background: #201b2c;
+    border-radius: 10px;
+    font-size: 12pt;
+}
+
+#v-layout {
+    background-color: #0C0E11;
+}
+
+QMainWindow {
+    background: #151A22;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-size: 12pt;
+}

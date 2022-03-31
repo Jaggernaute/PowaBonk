@@ -2,12 +2,9 @@
 #include <QFile>
 
 #include "src/Login_window.hpp"
-#include "test/test_main.hpp"
+#include "test/tests_template.hpp"
 
 int main(int argc, char *argv[]) {
-
-    //run tests
-    //test_main::all_tests();
 
     QApplication a(argc, argv);
 

@@ -57,6 +57,7 @@ else()
       message(STATUS "Failed to enable testing")
     else()
       message(STATUS "Testing enabled")
+        add_subdirectory(test)
     endif()
   else()
     message(STATUS "CMake is in '${CMAKE_BUILD_TYPE}' mode, testing is disabled.")
@@ -71,8 +72,6 @@ add_executable(
         include/SQL_API.hpp
         include/Login_handler.hpp
         include/Users.hpp
-        test/test_main.hpp
-        test/test_sql.hpp
         src/Dashboard.hpp
         include/statement.hpp
 )
