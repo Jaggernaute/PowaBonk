@@ -58,13 +58,13 @@ public:
             }
             if (row == max_row) return;
 
-            auto user_layout = new QVBoxLayout();
+            auto *user_layout = new QVBoxLayout();
 
-            auto user_name = new QLabel(user.get_name() + " " + user.get_surname());
-            auto user_id = new QLabel("#" + QString::number(user.get_id()));
-            auto user_email = new QLabel(user.get_email());
-            auto user_id_badge = new QLabel(user.get_id_badge());
-            auto user_last_reservation = new QLabel(user.get_last_reservation().toString());
+            auto *user_name = new QLabel(user.get_name() + " " + user.get_surname());
+            auto *user_id = new QLabel("#" + QString::number(user.get_id()));
+            auto *user_email = new QLabel(user.get_email());
+            auto *user_id_badge = new QLabel(user.get_id_badge());
+            auto *user_last_reservation = new QLabel(user.get_last_reservation().toString());
 
             user_layout->addWidget(user_name);
             user_layout->addWidget(user_id);
@@ -84,29 +84,29 @@ public:
     }
 
     void add_user(){
-        auto hlayout = new QHBoxLayout();
+        auto *hlayout = new QHBoxLayout();
 
-        auto name = new QLineEdit();
+        auto *name = new QLineEdit();
         name->setPlaceholderText("Prenom");
         name->setStyleSheet("background-color: #1C2535;");
         name->setStyleSheet("color: #9FA0B1");
 
-        auto surname = new QLineEdit();
+        auto *surname = new QLineEdit();
         surname->setPlaceholderText("Nom");
         surname->setStyleSheet("background-color: #1C2535;");
         surname->setStyleSheet("color: #9FA0B1");
 
-        auto email = new QLineEdit();
+        auto *email = new QLineEdit();
         email->setPlaceholderText("Email");
         email->setStyleSheet("background-color: #1C2535;");
         email->setStyleSheet("color: #9FA0B1");
 
-        auto id_badge = new QLineEdit();
+        auto *id_badge = new QLineEdit();
         id_badge->setPlaceholderText("Badge");
         id_badge->setStyleSheet("background-color: #1C2535;");
         id_badge->setStyleSheet("color: #9FA0B1");
 
-        auto add_button = new QPushButton("Ajouter");
+        auto *add_button = new QPushButton("Ajouter");
         add_button->setStyleSheet("background-color: #1C2837; color: #F5F6F7;");
         add_button->setFixedSize(125,50);
         add_button->setFont(QFont("Montserrat", 16));
@@ -120,7 +120,7 @@ public:
 
 
 
-        auto title = new QLabel("Ajout client");
+        auto *title = new QLabel("Ajout client");
         title->setStyleSheet("color: #F5F6F7;");
         title->setFont(QFont("Arial", 18));
 
@@ -131,7 +131,7 @@ public:
     QPushButton *search_button = new QPushButton("Rechercher");
     QLineEdit *search_bar = new QLineEdit();
 
-    QWidget * title_bar(){
+    auto title_bar() -> QWidget *{
         auto *title = new QLabel("Tableau de bord");
         title->setFont(QFont("Montserrat", 36, QFont::Bold));
 
@@ -175,13 +175,13 @@ public:
 
     void set_connections(){
         connect(this->search_button, &QPushButton::clicked,  [this]{
-            for(const auto& u : search_user(search_bar->text()).toList()){
-                qDebug() << u.get_name();
-                qDebug() << u.get_surname();
-                qDebug() << u.get_email();
-                qDebug() << u.get_id_badge();
-                qDebug() << u.get_id();
-                qDebug() << u.get_last_reservation();
+            for(const auto& usr : search_user(search_bar->text()).toList()){
+                qDebug() << usr.get_name();
+                qDebug() << usr.get_surname();
+                qDebug() << usr.get_email();
+                qDebug() << usr.get_id_badge();
+                qDebug() << usr.get_id();
+                qDebug() << usr.get_last_reservation();
             }
         });
     }

@@ -1,17 +1,16 @@
 #pragma once
 #include <QTest>
 
-class Tests: public QObject
-{
+class Tests: public QObject {
     Q_OBJECT
 
     private:
-        bool myCondition() {
+        static auto myCondition() -> bool {
             return true;
         }
 
     private slots:
-        void initTestCase() {
+        static void initTestCase() {
             qDebug("Called before everything else.");
         }
 

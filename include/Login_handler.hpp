@@ -10,9 +10,9 @@
 
 class Login_handler {
 public:
-    static bool sql_request(const QString &username, const QString &password) {
+    static auto sql_request(const QString &username, const QString &password) -> bool {
 
-        QString password_hash =QCryptographicHash::hash(
+        QString password_hash = QCryptographicHash::hash(
                                 password.toUtf8(),QCryptographicHash::Sha512
                                 ).toHex();
 

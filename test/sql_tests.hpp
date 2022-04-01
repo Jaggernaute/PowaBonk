@@ -11,11 +11,9 @@ class SQL_tests: public QObject
 {
 Q_OBJECT
 
-private:
-
-
 private slots:
-    void initTestCase() {
+
+    [[maybe_unused]] static void initTestCase() {
         qDebug("\n"
                      "███████╗ ██████╗ ██╗          ████████╗███████╗███████╗████████╗███████╗\n"
                      "██╔════╝██╔═══██╗██║          ╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝██╔════╝\n"
@@ -26,7 +24,7 @@ private slots:
                       "");
     }
 
-    void open_env_file() {
+    [[maybe_unused]] static void open_env_file() {
         QVERIFY(QFile::exists(":/envfile"));
     }
 

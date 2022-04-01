@@ -19,8 +19,8 @@ class Login_window: public QWidget {
     Q_OBJECT
 
     public:
-        QLineEdit *username_input{};
-        QLineEdit *password_input{};
+        QLineEdit   *username_input{};
+        QLineEdit   *password_input{};
         QPushButton *login_button{};
         QPushButton *cancel_button{};
         QVBoxLayout *v_layout{};
@@ -185,8 +185,8 @@ class Login_window: public QWidget {
             password_input->clear();
         }
 
-    void keyPressEvent(QKeyEvent *e) override {
-        if(e->key() == Qt::Key_Enter || e->key() == Qt::Key_Return) {
+    void keyPressEvent(QKeyEvent *event) override {
+        if(event->key() == Qt::Key_Enter || event->key() == Qt::Key_Return) {
             login_button_clicked();
         }
     }

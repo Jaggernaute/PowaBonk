@@ -32,3 +32,11 @@ add_executable(
 )
 add_test(NAME hash_tests COMMAND hash_tests)
 target_link_libraries(hash_tests PRIVATE Qt6::Test)
+
+add_executable(
+        connection_tests
+        connection_tests.hpp
+        ../resources/resources.qrc
+)
+add_test(NAME connection_tests COMMAND connection_tests)
+target_link_libraries(connection_tests PRIVATE Qt6::Test)

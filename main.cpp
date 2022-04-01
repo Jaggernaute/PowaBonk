@@ -4,9 +4,9 @@
 #include "src/Login_window.hpp"
 #include "test/tests_template.hpp"
 
-int main(int argc, char *argv[]) {
+auto main(int argc, char *argv[]) -> int {
 
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
     // set the icon
     QFile icon(":/icon.png");
@@ -21,10 +21,10 @@ int main(int argc, char *argv[]) {
     QFile styleSheet_file(":/style.css");
     styleSheet_file.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(styleSheet_file.readAll());
-    a.setStyleSheet(styleSheet);
+    app.setStyleSheet(styleSheet);
 
-    Login_window w;
-    w.show();
+    Login_window win;
+    win.show();
 
     return QApplication::exec();
 }

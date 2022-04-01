@@ -1,6 +1,6 @@
 ---
 Language: Cpp
-BasedOnStyle: Google
+BasedOnStyle: LLVM
 AccessModifierOffset: -4
 AllowShortFunctionsOnASingleLine: Inline
 BinPackArguments: false
@@ -8,4 +8,5 @@ BinPackParameters: false
 ColumnLimit: 80
 IndentWidth: 4
 SpacesBeforeTrailingComments: 1
+AlignConsecutiveMacros: AcrossEmptyLines
 ...
