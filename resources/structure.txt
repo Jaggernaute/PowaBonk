@@ -1,0 +1,48 @@
+.
+├── CMakeLists.txt
+├── LICENSE
+├── Makefile
+├── docs
+│   ├── AUTHORS.md
+│   ├── CODE_OF_CONDUCT.md
+│   ├── CONTRIBUTING.md
+│   ├── README.md
+│   └── blobs
+│       ├── fullscreen-app.png
+│       └── logo.png
+├── include
+│   ├── Login_handler.hpp
+│   ├── SQL_API.hpp
+│   ├── Users.hpp
+│   └── statement.hpp
+├── libs
+├── main.cpp
+├── resources
+│   ├── css
+│   │   ├── style.qss
+│   │   └── website.css
+│   ├── images
+│   │   ├── bg.png
+│   │   ├── icons
+│   │   │   ├── IE.png
+│   │   │   └── search.png
+│   │   └── logo
+│   │       └── logo.png
+│   ├── resources.qrc
+│   ├── scripts
+│   ├── seed.sql
+│   └── structure.txt
+├── sql
+│   ├── connection.sql
+│   ├── search-user.sql
+│   └── select-by-id.sql
+├── src
+│   ├── Dashboard.hpp
+│   └── Login_window.hpp
+└── test
+    ├── CMakeLists.txt
+    ├── hash_tests.hpp
+    ├── sql_tests.hpp
+    └── tests_template.hpp
+
+128 directories, 321 files
