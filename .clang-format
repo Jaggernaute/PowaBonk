@@ -9,4 +9,3 @@ ColumnLimit: 80
 IndentWidth: 4
 SpacesBeforeTrailingComments: 1
 AlignConsecutiveMacros: AcrossEmptyLines
-...

@@ -10,7 +10,7 @@
 #include "../include/Users.hpp"
 #include "../include/statement.hpp"
 
-class Dashboard: public QMainWindow {
+class Dashboard : public QMainWindow {
     QMainWindow *window;
     QVBoxLayout *window_layout = new QVBoxLayout();
     QGridLayout *cards_layout = new QGridLayout();
@@ -19,7 +19,7 @@ class Dashboard: public QMainWindow {
     QWidget *window_widget = new QWidget();
 
 public:
-    Dashboard(){
+    Dashboard() {
         window = new QMainWindow();
         window->setWindowTitle("Liste utilisateurs");
         window->resize(QApplication::screens()[0]->size());
