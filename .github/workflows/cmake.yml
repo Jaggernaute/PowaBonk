@@ -5,6 +5,16 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+
+        services:
+            # https://docs.docker.com/samples/library/mysql/
+            mysql:
+                image: mysql:5.7
+                env:
+                    MYSQL_ROOT_PASSWORD: root
+                ports:
+                    - 3306:3306
+
         steps:
             - uses: actions/checkout@v2
 
@@ -20,6 +30,15 @@ jobs:
               with:
                   cached: ${{ steps.cache-qt.outputs.cache-hit }}
                   version: 6.0.0
+
+            - name: exec sql script
+              run: |
+                mysql -u root -p root < ./resources/seed.sql
+
+            - name: create .env
+              run: |
+                touch ./resources/.env
+                echo "DBNAME=127.0.0.1 \nTABLENAME=borne \nUSERNAME=root \nPASSWORD=root" > ./resources/.env
 
             - name: cmake
               uses: lukka/get-cmake@latest
