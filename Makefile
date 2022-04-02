@@ -16,10 +16,9 @@ default_target: all
 
 
 #===============================================================================
-# Build the sources with cmake.
+# Build the sources to ninja.
 
 build_sources:
-
 	@ if [ ! -d ${build_path} ]; then\
 	   mkdir -p ${build_path};\
 	fi
@@ -58,3 +57,21 @@ run:
 # Build and run the app
 
  all: build_sources compile_quiet run
+
+
+#===============================================================================
+# tests
+
+tests:
+	@ echo -e "\n${ARROW} Running tests..."
+	@ if [ -d ${build_path} ]; then\
+  	   rm -rf ${build_path}/*;\
+  	fi
+	@ if [ ! -d ${build_path} ]; then\
+ 	   mkdir -p ${build_path};\
+ 	fi
+	cmake CMakelists.txt -B ${build_path}
+	cd ${build_path}/test && make
+	cd ${build_path}/test && ctest --extra-verbose
+
+	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Running tests"
