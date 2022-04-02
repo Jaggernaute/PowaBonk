@@ -31,7 +31,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v2
         with:
-          cached: true
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
           version: 6.0.0
 
       - name: cmake
