@@ -23,6 +23,3 @@ cmake-build-debug-coverage
 /build
 /test/tests_template.hpp
 /test/resources/.env
-
-# Test logs
-test_log.txt
