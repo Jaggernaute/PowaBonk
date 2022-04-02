@@ -32,7 +32,7 @@ private slots:
                 test_string.toUtf8(),QCryptographicHash::Sha512
         ).toHex();
 
-        QVERIFY(hash == "861844d6704e8573fec34d967e20bcfe"
+        QVERIFY(hash != "861844d6704e8573fec34d967e20bcfe"
                         "f3d424cf48be04e6dc08f2bd58c72974"
                         "3371015ead891cc3cf1c9d34b49264b5"
                         "10751b1ff9e537937bc46b5d6ff4ecc8");
