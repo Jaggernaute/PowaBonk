@@ -3,35 +3,38 @@ on:
   [push, pull_request]
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-            -   uses: shogo82148/actions-setup-mysql@v1
-                with:
-                    mysql-version: '8.0'
-            -   run: mysql -uroot -h127.0.0.1 < ./resources/seed.sql
+      - uses: shogo82148/actions-setup-mysql@v1
+        with:
+          mysql-version: '8.0'
 
-            - name: create .env
-              run: |
-                touch ./resources/.env
-                echo "DBNAME=127.0.0.1 \nTABLENAME=borne \nUSERNAME=root \nPASSWORD=" > ./resources/.env
+      - run: mysql -uroot -h127.0.0.1 < ./resources/seed.sql
 
-            - name: Cache Qt
-              id: cache-qt
-              uses: actions/cache@v1  # not v2!
-              with:
-                  path: ../Qt
-                  key: ${{ runner.os }}-QtCache
-            - name: Install Qt
-              uses: jurplel/install-qt-action@v2
-              with:
-                  cached: ${{ steps.cache-qt.outputs.cache-hit }}
-                  version: 6.0.0
-            - name: cmake
-              uses: lukka/get-cmake@latest
+      - name: create .env
+        run: |
+          touch ./resources/.env
+          echo "DBNAME=127.0.0.1 \nTABLENAME=borne \nUSERNAME=root \nPASSWORD=" > ./resources/.env
 
-            - name: Run.
-              run: make tests
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v1  # not v2!
+        with:
+          path: ../Qt
+          key: ${{ runner.os }}-QtCache
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
+          version: 6.0.0
+
+      - name: cmake
+        uses: lukka/get-cmake@latest
+
+      - name: Run.
+        run: make tests
