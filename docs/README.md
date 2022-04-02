@@ -105,7 +105,7 @@ details on how to install and run it.
 #### Linux
 #### Arch Linux:
   ```sh
-  pacman -S qt6-base-git
+  pacman -S qt6-base-git ninja
   ```
   [learn more](https://wiki.archlinux.org/title/qt) 
 

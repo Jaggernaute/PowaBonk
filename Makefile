@@ -54,6 +54,15 @@ run:
 
 
 #===============================================================================
+# Cleaning build files and directories.
+clean:
+	@ echo -e "\n${ARROW} Cleaning..."
+	@ rm -rf ${build_path};
+	@ rm -rf ./cmake-build-*;
+
+
+
+#===============================================================================
 # Build and run the app
 
  all: build_sources compile_quiet run
