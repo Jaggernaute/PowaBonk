@@ -8,7 +8,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - uses: shogo82148/actions-setup-mysql@v1
         with:
           mysql-version: '8.0'
@@ -38,3 +37,12 @@ jobs:
 
       - name: Run.
         run: make tests
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: "3.8"
+          architecture: "x64"
+
+      - name: running test log parser
+        run: |
+          python ./.github/scripts/parser.py
