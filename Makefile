@@ -74,6 +74,6 @@ tests:
 	cd ${build_path}/test && make
 
 	touch test_log.txt
-	cd ${build_path}/test && ctest --extra-verbose > ../../test_log.txt
+	cd ${build_path}/test && ctest --extra-verbose
 
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Running tests"
