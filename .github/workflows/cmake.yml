@@ -33,7 +33,7 @@ jobs:
 
             - name: exec sql script
               run: |
-                mysql -u root -p root < ./resources/seed.sql
+                mysql -u root -proot < ./resources/seed.sql
 
             - name: create .env
               run: |
