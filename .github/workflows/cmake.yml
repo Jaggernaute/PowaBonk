@@ -6,15 +6,6 @@ jobs:
     build:
         runs-on: ubuntu-latest
 
-        services:
-            # https://docs.docker.com/samples/library/mysql/
-            mysql:
-                image: mysql:5.7
-                env:
-                    MYSQL_ROOT_PASSWORD: root
-                ports:
-                    - 3306:3306
-
         steps:
             - uses: actions/checkout@v2
 
@@ -31,6 +22,13 @@ jobs:
                   cached: ${{ steps.cache-qt.outputs.cache-hit }}
                   version: 6.0.0
 
+            steps:
+                -   uses: actions/checkout@v3
+                -   uses: shogo82148/actions-setup-mysql@v1
+                    with:
+                        mysql-version: '8.0'
+                -   run: mysql -uroot -h127.0.0.1 -e 'SELECT version()'
+
             - name: exec sql script
               run: |
                 mysql -u root -proot < ./resources/seed.sql
@@ -38,7 +36,7 @@ jobs:
             - name: create .env
               run: |
                 touch ./resources/.env
-                echo "DBNAME=127.0.0.1 \nTABLENAME=borne \nUSERNAME=root \nPASSWORD=root" > ./resources/.env
+                echo "DBNAME=127.0.0.1 \nTABLENAME=borne \nUSERNAME=root \nPASSWORD=" > ./resources/.env
 
             - name: cmake
               uses: lukka/get-cmake@latest
