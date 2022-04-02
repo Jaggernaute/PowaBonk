@@ -1,3 +1,8 @@
+
+CREATE DATABASE IF NOT EXISTS `borne`;
+
+USE `borne`;
+
 CREATE TABLE admins
 (
     id       INT          AUTO_INCREMENT
