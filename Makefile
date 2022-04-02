@@ -72,6 +72,8 @@ tests:
  	fi
 	cmake CMakelists.txt -B ${build_path}
 	cd ${build_path}/test && make
-	cd ${build_path}/test && ctest --extra-verbose >> ../../test_log.txt
+
+	touch test_log.txt
+	cd ${build_path}/test && ctest --extra-verbose > ../../test_log.txt
 
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Running tests"
