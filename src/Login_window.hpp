@@ -150,7 +150,8 @@ class Login_window: public QWidget {
          * @see set_connections()
          */
         void login_button_clicked() {
-            if(username_input->text().isEmpty() || password_input->text().isEmpty()){
+            if( username_input->text().isEmpty() ||
+                password_input->text().isEmpty() ) {
                 QMessageBox::warning(this,
                                      "Error",
                                      "Please enter a username and password");

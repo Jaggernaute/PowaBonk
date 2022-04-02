@@ -60,11 +60,17 @@ public:
 
             auto *user_layout = new QVBoxLayout();
 
-            auto *user_name = new QLabel(user.get_name() + " " + user.get_surname());
-            auto *user_id = new QLabel("#" + QString::number(user.get_id()));
+            auto *user_name = new QLabel(
+                    user.get_name() + " " + user.get_surname()
+                    );
+            auto *user_id = new QLabel(
+                    "#" + QString::number(user.get_id())
+                    );
             auto *user_email = new QLabel(user.get_email());
             auto *user_id_badge = new QLabel(user.get_id_badge());
-            auto *user_last_reservation = new QLabel(user.get_last_reservation().toString());
+            auto *user_last_reservation = new QLabel(
+                    user.get_last_reservation().toString()
+                    );
 
             user_layout->addWidget(user_name);
             user_layout->addWidget(user_id);
@@ -72,7 +78,7 @@ public:
             user_layout->addWidget(user_id_badge);
             user_layout->addWidget(user_last_reservation);
 
-            auto card = new QWidget();
+            auto *card = new QWidget();
             card->setFixedSize(300,150);
             card->setStyleSheet("background-color: #1C2837;");
             card->setLayout(user_layout);
@@ -133,10 +139,18 @@ public:
 
     auto title_bar() -> QWidget *{
         auto *title = new QLabel("Tableau de bord");
-        title->setFont(QFont("Montserrat", 36, QFont::Bold));
+        title->setFont(
+                QFont(
+                "Montserrat",
+                36,
+                QFont::Bold
+                )
+                );
 
         auto *logo = new QPixmap(":/logo.png");
-        logo->setMask(logo->createMaskFromColor(QColor(255, 255, 255)));
+        logo->setMask(logo->createMaskFromColor(
+                QColor(255, 255, 255)
+                ));
         auto *logo_label = new QLabel();
         logo_label->setPixmap(*logo);
 
@@ -146,7 +160,9 @@ public:
         logo_label->setPixmap(search_icon->scaled(18,18));
 
         search_button->setText("Rechercher");
-        search_button->setStyleSheet("background-color: #1C2837; color: #F5F6F7;");
+        search_button->setStyleSheet(
+                "background-color: #1C2837; color: #F5F6F7;"
+                );
         search_button->setFixedSize(100,50);
         search_button->setFont(QFont("Arial", 12));
         search_button->setCursor(Qt::PointingHandCursor);
@@ -163,7 +179,11 @@ public:
 
         auto *title_layout = new QGridLayout();
         title_layout->addWidget(title,0 ,0);
-        title_layout->addWidget(logo_label, 0, 2, 2, 1);
+        title_layout->addWidget(
+                logo_label,
+                0, 2,
+                2, 1
+                );
         title_layout->addLayout(search_layout, 0, 4);
 
         auto *title_widget = new QWidget();
@@ -174,8 +194,11 @@ public:
     }
 
     void set_connections(){
-        connect(this->search_button, &QPushButton::clicked,  [this]{
-            for(const auto& usr : search_user(search_bar->text()).toList()){
+        connect(this->search_button,
+                &QPushButton::clicked,  [this]{
+            for(const auto& usr : search_user(
+                            search_bar->text()
+                            ).toList()) {
                 qDebug() << usr.get_name();
                 qDebug() << usr.get_surname();
                 qDebug() << usr.get_email();

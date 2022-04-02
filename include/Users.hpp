@@ -25,12 +25,24 @@ class Users {
             this->last_reservation = std::move(last_reservation);
         };
 
-        [[nodiscard]] int get_id() const { return id; };
-        [[nodiscard]] QString get_name() const { return name; };
-        [[nodiscard]] QString get_surname() const { return surname; };
-        [[nodiscard]] QString get_email() const { return email; };
-        [[nodiscard]] QString get_id_badge() const { return id_badge; };
-        [[nodiscard]] QDateTime get_last_reservation() const { return last_reservation; };
+        [[nodiscard]] auto get_id() const -> int {
+            return id;
+        };
+        [[nodiscard]] auto get_name() const -> QString {
+            return name;
+        };
+        [[nodiscard]] auto get_surname() const -> QString {
+            return surname;
+        };
+        [[nodiscard]] auto get_email() const -> QString {
+            return email;
+        };
+        [[nodiscard]] auto get_id_badge() const -> QString {
+            return id_badge;
+        };
+        [[nodiscard]] auto get_last_reservation() const -> QDateTime {
+            return last_reservation;
+        };
 
     private:
         int id;

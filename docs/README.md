@@ -5,7 +5,8 @@
 *** I'm using markdown "reference style" links for readability.
 *** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
 *** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax 
+*** you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
@@ -21,7 +22,8 @@
   <p align="center">
     Powerful system for reserving an electric car charging station.
     <br />
-    <a href="https://github.com/Jaggernaute/PowaBonk"><strong>Documentation »</strong></a>
+    <a href="https://github.com/Jaggernaute/PowaBonk">
+    <strong>Documentation »</strong></a>
     <br />
     <br />
     <a href="https://github.com/Jaggernaute/PowaBonk">Demo</a>
@@ -67,7 +69,8 @@
 
 PowaBonk is a powerful system for reserving an electric car charging station.
 This repository is only the user management part of the system.
-It's built with [C++](https://en.wikipedia.org/wiki/C%2B%2B) and [Qt](https://www.qt.io/),
+It's built with [C++](https://en.wikipedia.org/wiki/C%2B%2B) and 
+[Qt](https://www.qt.io/),
 to be fast and cross-platform.
 
 <img src="blobs/fullscreen-app.png" alt="Logo" height="300">
@@ -93,8 +96,8 @@ In order to compile and run the application, you need to have the following:
 
 List of prerequisites needed to compile and run the application.  
 For more information, 
-go take a look to the official site of the technology you'll find greater details on
-how to install and run it.
+go take a look to the official site of the technology you'll find greater 
+details on how to install and run it.
 
 #### Linux
 #### Arch Linux:
@@ -136,7 +139,8 @@ how to install and run it.
    ```js
    make
    ```
-   <!-- TODO: add the database / server deployement instructions  and move everything to a DEPLOYEMENT.md-->
+   <!-- TODO: add the database / server deployement instructions  and move 
+   everything to a DEPLOYEMENT.md-->
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -150,20 +154,25 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- CONTRIBUTING -->
 ## Contributing
 
-See the code of conduct [here](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/CODE_OF_CONDUCT.md) and read 
-the gidelines [here](https://www.github.com/Jaggernaute/PowaBonk/tree/master/docs/CONTRIBUTING.md).
+See the code of conduct 
+[here](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/CODE_OF_CONDUCT.md) 
+and read the gidelines 
+[here](https://www.github.com/Jaggernaute/PowaBonk/tree/master/docs/CONTRIBUTING.md).
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the GNU License. See `LICENSE.txt` (available [here](https://www.github.com/Jaggernaute/PowaBonk/blob/master/LICENSE)) ) for more information.
+Distributed under the GNU License. See `LICENSE.txt` 
+(available [here](https://www.github.com/Jaggernaute/PowaBonk/blob/master/LICENSE)) 
+for more information.
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-See all the people that contributed to this project [here](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/AUTHORS.md)
+See all the people that contributed to this project 
+[here](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/AUTHORS.md)
 
 
 

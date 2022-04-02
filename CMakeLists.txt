@@ -60,7 +60,10 @@ else()
         add_subdirectory(test)
     endif()
   else()
-    message(STATUS "CMake is in '${CMAKE_BUILD_TYPE}' mode, testing is disabled.")
+    message(
+            STATUS
+            "CMake is in '${CMAKE_BUILD_TYPE}' mode, testing is disabled."
+    )
   endif()
 endif()
 

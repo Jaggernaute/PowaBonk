@@ -13,7 +13,8 @@ Before you begin:
 Do you think you would be able to fix a bug?
 - If there is an open issue and no one is assigned feel free to claim it by commenting.
   Someone will assign you can begin working on it.
-- If there is no issue open, open one using the bug report issue form and describe the bug.
+- If there is no issue open, open one using the bug report issue form and describe 
+  the bug.
   We'll use the issue to have a conversation about the problem you found.
 
 ### :sparkles: Add a new feature
@@ -25,7 +26,8 @@ Do you think you would be able to add a new feature?
 ## :arrow_up: Make your update
 Make your changes to the file(s) you'd like to update to solve an issue
 or add a new feature.
-You can change anything in the code, but please make sure to keep the code clean and well documented.
+You can change anything in the code, but please make sure to keep the code clean 
+and well documented.
 
 
 ## :envelope_with_arrow:  Open a pull request
@@ -38,4 +40,5 @@ use the pull request template to open your PR (pull request).
   pull request might not get approved and will be asked for modifications.
 
 You can contact me (Jaggernaute) if you have any questions 
-(all my contact infos are at the bottom of my [github profile](https://www.github.com/jaggernaute)).
+(all my contact infos are at the bottom of my 
+[github profile](https://www.github.com/jaggernaute)).
