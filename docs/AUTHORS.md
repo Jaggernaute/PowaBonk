@@ -10,4 +10,4 @@
 
 ---
 
-- [Yohann Boniface](https://github.com/Sigmanficient) 
+- [Sigmanficient](https://github.com/Sigmanficient) 
