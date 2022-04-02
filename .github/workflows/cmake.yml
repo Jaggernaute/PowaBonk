@@ -4,6 +4,7 @@ on:
 
 jobs:
     build:
+        runs-on: ubuntu-latest
         steps:
             - name: cmake
             - uses: lukka/get-cmake@latest
@@ -18,6 +19,4 @@ jobs:
                 buildPreset: 'ninja-multi-vcpkg'
 
             - name: Run.
-            - run: make tests
-
-        runs-on: ubuntu-latest
+              run: make tests
