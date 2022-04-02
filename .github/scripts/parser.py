@@ -3,9 +3,9 @@ import re
 
 def main():
     with open('test_log.txt') as f:
-        lines = list(filter(bool, f.read().splitlines()))
+        lines = f.read()
 
-    passed = re.findall(r'^(\d+)%', lines[-2])[0]
+    passed = re.findall(r'^(\d*)%.*$', lines, flags=re.MULTILINE)[0]
     print(f'{passed}% passed')
 
     if passed != '100':
