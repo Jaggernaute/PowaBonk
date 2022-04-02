@@ -15,7 +15,7 @@ jobs:
                 configurePreset: 'ninja-multi-vcpkg'
                 buildPreset: 'ninja-multi-vcpkg'
 
-            - name: Run bitch.
+            - name: Run.
             - run: make tests
 
         runs-on: ubuntu-latest
