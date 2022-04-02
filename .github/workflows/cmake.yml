@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: cmake
-            - uses: lukka/get-cmake@latest
+              uses: lukka/get-cmake@latest
 
             - name: Restore artifacts, or setup vcpkg (do not install any package)
               uses: lukka/run-vcpkg@v10
