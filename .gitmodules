@@ -1,0 +1,2 @@
+mkdir externals
+git submodule add git://github.com/RWTH-HPC/CMake-codecov.git externals/CMake-codecov
