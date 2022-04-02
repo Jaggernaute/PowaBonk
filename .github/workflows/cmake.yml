@@ -9,14 +9,5 @@ jobs:
             - name: cmake
               uses: lukka/get-cmake@latest
 
-            - name: Restore artifacts, or setup vcpkg (do not install any package)
-              uses: lukka/run-vcpkg@v10
-
-            - name: Run CMake consuming CMakePresets.json and vcpkg.json by mean of vcpkg.
-              uses: lukka/run-cmake@v10
-              with:
-                configurePreset: 'ninja-multi-vcpkg'
-                buildPreset: 'ninja-multi-vcpkg'
-
             - name: Run.
               run: make tests
