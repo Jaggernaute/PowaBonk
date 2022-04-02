@@ -24,7 +24,7 @@ build_sources:
 	   mkdir -p ${build_path};\
 	fi
 	@ echo -e "${ARROW} Building ..."
-	cmake CMakelists.txt -B ${build_path}
+	cmake CMakelists.txt -G "Ninja" -B ${build_path}
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] CMake build finished"
 
 
@@ -33,10 +33,7 @@ build_sources:
 
 compile:
 	@ echo -e "\n${ARROW} Compiling..."
-	chmod +x ./resources/scripts/progress-bar.sh
-	sh resources/scripts/progress-bar.sh
-
-	make -C ${build_path}
+	@ ninja -C ${build_path} -v -l 100 -j 4 -k 0
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Compiling finished"
 
 
@@ -45,7 +42,7 @@ compile:
 
 compile_quiet:
 	@ echo -e "\n${ARROW} Compiling..."
-	make -C ${build_path} -s
+	@ ninja -C ${build_path}
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Compiling finished"
 
 
