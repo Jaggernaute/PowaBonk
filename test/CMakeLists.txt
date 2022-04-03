@@ -4,6 +4,8 @@ set(SKIP_AUTOMOC ON)
 
 find_package(Qt6Test REQUIRED)
 
+set(path_to_junit_log ${CMAKE_CURRENT_BINARY_DIR}/logs)
+
 # log if the package was found
 if(Qt6Test_FOUND)
   message(STATUS "Qt6Test found")

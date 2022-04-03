@@ -39,3 +39,9 @@ jobs:
 
       - name: Run.
         run: make tests
+
+      - name: upload.
+        run: |
+          curl -Os https://uploader.codecov.io/latest/linux/codecov 
+          chmod +x codecov 
+          ./codecov

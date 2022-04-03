@@ -75,14 +75,12 @@ tests:
 	@ echo -e "\n${ARROW} Running tests..."
 	@ if [ -d ${build_path} ]; then\
   	   rm -rf ${build_path}/*;\
-  	fi
+  	  fi
 	@ if [ ! -d ${build_path} ]; then\
  	   mkdir -p ${build_path};\
- 	fi
-	cmake CMakelists.txt -B ${build_path}
-	cd ${build_path}/test && make
-
-	touch test_log.txt
-	cd ${build_path}/test && ctest --extra-verbose
-
+ 	  fi
+	@ cmake CMakelists.txt -B ${build_path}
+	@ cd ${build_path}/test && make
+	@ mkdir -p ./test_results
+	@ cd ${build_path}/test && ctest --output-junit ./test_results/test_results.xml
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Running tests"
