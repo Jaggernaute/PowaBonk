@@ -81,6 +81,5 @@ tests:
  	  fi
 	@ cmake CMakelists.txt -B ${build_path}
 	@ cd ${build_path}/test && make
-	@ mkdir -p ./test_results
-	@ cd ${build_path}/test && ctest --output-junit ./test_results/test_results.xml
+	@ cd ${build_path}/test && ctest --coverage
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Running tests"
