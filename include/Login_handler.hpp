@@ -10,16 +10,20 @@
 
 class Login_handler {
 public:
-    static auto sql_request(const QString &username, const QString &password)
+    struct Credentials {
+        QString username, password;
+    };
+    static auto sql_request(const Credentials& credentials)
         -> bool {
 
         QString password_hash = QCryptographicHash::hash(
-                                password.toUtf8(),QCryptographicHash::Sha512
-                                ).toHex();
+                credentials.password.toUtf8(),
+                QCryptographicHash::Sha512
+                ).toHex();
 
         bool set_logged_in = false;
 
-        if (connection(username, password_hash)) {
+        if (connection(credentials.username, password_hash)) {
             qDebug() << "login success";
             set_logged_in = true;
         }

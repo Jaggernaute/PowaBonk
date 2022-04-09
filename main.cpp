@@ -2,7 +2,7 @@
 #include <QFile>
 
 #include "src/Login_window.hpp"
-#include "test/tests_template.hpp"
+#include "test/tests_template.hpp.exemple"
 
 auto main(int argc, char *argv[]) -> int {
 

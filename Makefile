@@ -23,7 +23,7 @@ build_sources:
 	   mkdir -p ${build_path};\
 	fi
 	@ echo -e "${ARROW} Building ..."
-	cmake CMakelists.txt -G "Ninja" -B ${build_path}
+	@ cmake CMakelists.txt -G "Ninja" -B ${build_path}
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] CMake build finished"
 
 
@@ -49,7 +49,7 @@ compile_quiet:
 # Run the app (from the newly created binary)
 run:
 	@ echo -e "\n${ARROW} Running..."
-	./${build_path}powa_bonk
+	@ ./${build_path}powa_bonk
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Running"
 
 
@@ -65,7 +65,7 @@ clean:
 #===============================================================================
 # Build and run the app
 
- all: build_sources compile_quiet run
+ all: clean build_sources compile_quiet run
 
 
 #===============================================================================
@@ -79,7 +79,8 @@ tests:
 	@ if [ ! -d ${build_path} ]; then\
  	   mkdir -p ${build_path};\
  	  fi
-	@ cmake CMakelists.txt -B ${build_path}
-	@ cd ${build_path}/test && make
-	@ cd ${build_path}/test && ctest --coverage
+	@ cmake test/CMakelists.txt -G Ninja -B ${build_path} -DENABLE_CPPUNIT=yes
+	@ cd ${build_path} && ninja
+	@ cd ${build_path} && ninja test
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Running tests"
+

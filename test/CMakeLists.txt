@@ -1,25 +1,13 @@
+cmake_minimum_required(VERSION 3.21)
 project(mytest LANGUAGES CXX)
 
 set(SKIP_AUTOMOC ON)
 
+add_library(common INTERFACE)
+
 find_package(Qt6Test REQUIRED)
 
 add_library(coverage_config INTERFACE)
-
-option(CODE_COVERAGE "Enable coverage reporting" ON)
-if(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    # Add required flags (GCC & LLVM/Clang)
-    target_compile_options(coverage_config INTERFACE
-            -O0        # no optimization
-            -g         # generate debug info
-            --coverage # sets all required flags
-            )
-    if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.13)
-        target_link_options(coverage_config INTERFACE --coverage)
-    else()
-        target_link_libraries(coverage_config INTERFACE --coverage)
-    endif()
-endif(CODE_COVERAGE AND CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 
 # log if the package was found
 if(Qt6Test_FOUND)
@@ -32,6 +20,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOMOC ON)
 
+include(CTest)
 enable_testing(true)
 
 add_executable(
@@ -40,7 +29,7 @@ add_executable(
         ../resources/resources.qrc
 )
 add_test(NAME sql_tests COMMAND sql_tests)
-target_link_libraries(sql_tests PRIVATE Qt6::Test)
+target_link_libraries(sql_tests PRIVATE Qt6::Test common)
 
 add_executable(
         hash_tests
@@ -48,7 +37,7 @@ add_executable(
         ../resources/resources.qrc
 )
 add_test(NAME hash_tests COMMAND hash_tests)
-target_link_libraries(hash_tests PRIVATE Qt6::Test)
+target_link_libraries(hash_tests PRIVATE Qt6::Test common)
 
 add_executable(
         connection_tests
@@ -56,4 +45,4 @@ add_executable(
         ../resources/resources.qrc
 )
 add_test(NAME connection_tests COMMAND connection_tests)
-target_link_libraries(connection_tests PRIVATE Qt6::Test)
+target_link_libraries(connection_tests PRIVATE Qt6::Test common)
