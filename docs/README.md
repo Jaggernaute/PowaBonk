@@ -105,7 +105,7 @@ details on how to install and run it.
 #### Linux
 #### Arch Linux:
   ```sh
-  pacman -S qt6-base-git ninja
+  [paru / yay or your favorite AUR helper] -S qt6-base-git ninja
   ```
   [learn more](https://wiki.archlinux.org/title/qt) 
 
@@ -130,20 +130,7 @@ details on how to install and run it.
 
 ### Installation
 
-1. Clone the repository on your machine.
-   ```sh
-   git clone https://github.com/Jaggernaute/PowaBonk.git
-   ```
-2. In the `PowaBonk` directory, run CMake :
-   ```sh
-   cmake CmakeLists.txt
-   ```
-3. Copile the application with :
-   ```js
-   make
-   ```
-   <!-- TODO: add the database / server deployement instructions  and move 
-   everything to a DEPLOYEMENT.md-->
+Please follow the instructions [here](https://github.com/) to install the application.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -152,7 +139,7 @@ Use this space to show useful examples of how a project can be used.
 Additional screenshots, code examples and demos work well in this space. 
 You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/INSTALL.md)_
 
 <!-- CONTRIBUTING -->
 ## Contributing
