@@ -130,7 +130,7 @@ details on how to install and run it.
 
 ### Installation
 
-Please follow the instructions [here](https://github.com/) to install the application.
+Please follow the instructions [here](https://github.com/Jaggernaute/PowaBonk/blob/master/docs/INSTALL.md) to install the application.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -139,7 +139,7 @@ Use this space to show useful examples of how a project can be used.
 Additional screenshots, code examples and demos work well in this space. 
 You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/INSTALL.md)_
+_For more examples, please refer to the [Documentation](https://github.com/Jaggernaute/PowaBonk/tree/master/docs/CODE_OF_CONDUCT.md)_
 
 <!-- CONTRIBUTING -->
 ## Contributing
