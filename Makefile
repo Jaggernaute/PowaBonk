@@ -7,6 +7,8 @@ ARROW := \033[1m\033[31m>\033[32m>\033[33m>\033[39m
 CL_GREEN := \033[32m
 CL_RESET := \033[39m
 
+include ./resources/.env
+export
 
 
 #===============================================================================
@@ -19,6 +21,8 @@ default_target: all
 # Build the sources to ninja.
 
 build_sources:
+
+	@ mysql -uroot -h127.0.0.1 -p${PASSWORD}< ./resources/seed.sql
 	@ if [ ! -d ${build_path} ]; then\
 	   mkdir -p ${build_path};\
 	fi
