@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS `borne`;
 
 USE `borne`;
 
-CREATE TABLE admins
+CREATE TABLE IF NOT EXISTS `admins`
 (
     id       INT          AUTO_INCREMENT
                           PRIMARY KEY,
@@ -15,7 +15,7 @@ CREATE TABLE admins
         UNIQUE (username)
 );
 
-CREATE TABLE utilisateurs
+CREATE TABLE IF NOT EXISTS `utilisateurs`
 (
     id             INT          AUTO_INCREMENT
                                 PRIMARY KEY,
@@ -31,7 +31,7 @@ CREATE TABLE utilisateurs
         UNIQUE (mail)
 );
 
-CREATE TABLE planing
+CREATE TABLE IF NOT EXISTS `planing`
 (
     id             INT     AUTO_INCREMENT
                            PRIMARY KEY,
@@ -42,7 +42,7 @@ CREATE TABLE planing
             REFERENCES utilisateurs (id)
 );
 
-create table creneau
+create TABLE IF NOT EXISTS `creneau`
 (
     id          INT          AUTO_INCREMENT,
     jour        DATE         NULL,
