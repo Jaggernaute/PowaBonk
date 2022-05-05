@@ -6,6 +6,9 @@
 #define PROJECT_ADMIN_INTERFACE_PANNEL_WINDOW_HPP
 
 #include <QMainWindow>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QGridLayout>
 #include <QApplication>
 #include "../include/Users.hpp"
 #include "../include/statement.hpp"

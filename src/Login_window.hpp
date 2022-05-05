@@ -161,14 +161,14 @@ class Login_window: public QWidget {
                 return;
             }
 
-            QString username = username_input->text();
-            QString password = password_input->text();
+            Login_handler::Credentials credentials;
+            credentials.username = username_input->text();
+            credentials.password = password_input->text();
 
-            if(Login_handler::sql_request(username, password)){
-                new Dashboard();
-                this->close();
-            }
-            else{
+            if(Login_handler::sql_request(credentials)) {
+                    new Dashboard();
+                    this->close();
+            } else{
                 QMessageBox::warning(
                         this,
                         "Login Failed",

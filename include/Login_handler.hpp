@@ -13,6 +13,7 @@ public:
     struct Credentials {
         QString username, password;
     };
+
     static auto sql_request(const Credentials& credentials)
         -> bool {
 
