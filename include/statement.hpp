@@ -7,7 +7,7 @@
 
 #include "Users.hpp"
 
-static QList<Users> search_user(const QString& search_string) {
+static auto search_user(const QString& search_string) -> QList<Users> {
     QList<Users> list;
     SQL_API::instance();
     QSqlQuery query;
@@ -38,25 +38,39 @@ static QList<Users> search_user(const QString& search_string) {
     return list;
 };
 
-static QList<Users> get_user(int id) {
+/**
+ * @brief The get_user method
+ *
+ * This class is used to store the information of a statement.
+ *
+ * @param int usr_count - The number of users to return.
+ *
+ * @return QList<Users> - A list of users.
+ *
+ * @author jaggernaute
+ */
+static auto get_user(int usr_count) -> QList<Users> {
     QList<Users> list;
     SQL_API::instance();
     QSqlQuery query;
     QString query_string;
 
-    QFile file(":/select-id.sql");
-
+    QFile file(":/select-users.sql");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Error opening file";
     }
 
+
     query_string = file.readAll();
 
-    for(int i = 1; i <= id; i++) {
+    for(int i = 1; i <= usr_count; i++) {
         query.prepare(query_string);
-        query.bindValue(":id", i);
         query.exec();
         query.next();
+
+        if(query.next()) {
+            break;
+        }
 
         Users user(
                 query.value("id").toInt(),

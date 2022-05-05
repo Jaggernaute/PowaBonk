@@ -40,7 +40,7 @@ compile:
 	@ echo -e "[${CL_GREEN}OK${CL_RESET}] Compiling finished"
 
 
-#=============================================================================
+#===============================================================================
 # Compile the Cmake generated MOC files (with minimal logs).
 
 compile_quiet:

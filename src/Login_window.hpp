@@ -18,6 +18,7 @@
 class Login_window: public QWidget {
     Q_OBJECT
 
+
     public:
         QLineEdit   *username_input{};
         QLineEdit   *password_input{};
@@ -36,7 +37,7 @@ class Login_window: public QWidget {
         explicit Login_window(){
             this->setWindowTitle("Login");
             this->resize(QApplication::screens()[0]->size());
-            this->setWindowIcon(QIcon(":/icons/IE.png"));
+            this->setWindowIcon(QIcon(":/icon.png"));
 
             create_ui();
             layout_setup();
@@ -140,6 +141,8 @@ class Login_window: public QWidget {
         }
 
         ~Login_window() override = default;
+
+
 
     private slots:
 
