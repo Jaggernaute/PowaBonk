@@ -38,7 +38,7 @@ else()
 endif()
 
 find_package(
-        Qt6 COMPONENTS
+        Qt5 COMPONENTS
         Test
         Core
         Gui
@@ -83,7 +83,7 @@ target_link_libraries(
         powa_bonk
         Qt::Core
         Qt::Gui
-        Qt6::Sql
-        Qt6::Test
+        Qt5::Sql
+        Qt5::Test
         Qt::Widgets
 )
