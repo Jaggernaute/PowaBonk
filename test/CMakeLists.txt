@@ -5,19 +5,24 @@ set(SKIP_AUTOMOC ON)
 
 add_library(common INTERFACE)
 
-find_package(Qt6Test REQUIRED)
+if(CMAKE_QT_VERSION)
+  message(STATUS "CMAKE_QT_VERSION: ${CMAKE_QT_VERSION}")
+else()
+  set(CMAKE_QT_VERSION Qt5)
+endif()
+
+find_package(${CMAKE_QT_VERSION}Test REQUIRED)
 
 add_library(coverage_config INTERFACE)
 
 # log if the package was found
-if(Qt6Test_FOUND)
-  message(STATUS "Qt6Test found")
-else(Qt6Test_FOUND)
-  message(FATAL_ERROR "Qt6Test not found")
-endif(Qt6Test_FOUND)
+if(${CMAKE_QT_VERSION}Test_FOUND)
+  message(STATUS "${CMAKE_QT_VERSION}Test found")
+else(${CMAKE_QT_VERSION}Test_FOUND)
+  message(FATAL_ERROR "${CMAKE_QT_VERSION}Test not found")
+endif(${CMAKE_QT_VERSION}Test_FOUND)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
 set(CMAKE_AUTOMOC ON)
 
 include(CTest)
@@ -29,7 +34,7 @@ add_executable(
         ../resources/resources.qrc
 )
 add_test(NAME sql_tests COMMAND sql_tests)
-target_link_libraries(sql_tests PRIVATE Qt6::Test common)
+target_link_libraries(sql_tests PRIVATE ${CMAKE_QT_VERSION}::Test common)
 
 add_executable(
         hash_tests
@@ -37,7 +42,7 @@ add_executable(
         ../resources/resources.qrc
 )
 add_test(NAME hash_tests COMMAND hash_tests)
-target_link_libraries(hash_tests PRIVATE Qt6::Test common)
+target_link_libraries(hash_tests PRIVATE ${CMAKE_QT_VERSION}::Test common)
 
 add_executable(
         connection_tests
@@ -45,4 +50,4 @@ add_executable(
         ../resources/resources.qrc
 )
 add_test(NAME connection_tests COMMAND connection_tests)
-target_link_libraries(connection_tests PRIVATE Qt6::Test common)
+target_link_libraries(connection_tests PRIVATE ${CMAKE_QT_VERSION}::Test common)

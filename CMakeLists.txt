@@ -25,8 +25,8 @@ message("Cmake logs: ")
 if(CMAKE_QT_VERSION)
   message(STATUS "CMAKE_QT_VERSION: ${CMAKE_QT_VERSION}")
 else()
-  set(CMAKE_QT_VERSION 6)
-  message(STATUS "CMAKE_QT_VERSION: ${CMAKE_QT_VERSION}")
+  set(CMAKE_QT_VERSION Qt5)
+  find_package(${CMAKE_QT_VERSION}Core REQUIRED)
 endif()
 
 #set the resource compiler
@@ -38,7 +38,7 @@ else()
 endif()
 
 find_package(
-        Qt5 COMPONENTS
+        ${CMAKE_QT_VERSION} COMPONENTS
         Test
         Core
         Gui
