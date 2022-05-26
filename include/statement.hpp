@@ -6,6 +6,7 @@
 #define POWA_BONK_STATEMENT_HPP
 
 #include "Users.hpp"
+#include <QDebug>
 
 static auto search_user(const QString& search_string) -> QList<Users> {
     QList<Users> list;

@@ -32,7 +32,7 @@ build_sources:
 
 
 #===============================================================================
-# Compile the Cmake generated MOC files.
+# Compile the cmake generated MOC files.
 
 compile:
 	@ echo -e "\n${ARROW} Compiling..."
@@ -41,7 +41,7 @@ compile:
 
 
 #===============================================================================
-# Compile the Cmake generated MOC files (with minimal logs).
+# Compile the cmake generated MOC files (with minimal logs).
 
 compile_quiet:
 	@ echo -e "\n${ARROW} Compiling..."

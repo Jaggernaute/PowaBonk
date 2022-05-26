@@ -6,9 +6,10 @@
 #define SQL_API_HPP
 #ifdef SQL_API_HPP
 
-#include <memory>
-#include <QSqlDatabase>
 #include <QFile>
+#include <QSqlDatabase>
+#include <QTextStream>
+#include <memory>
 
 class SQL_API {
 
