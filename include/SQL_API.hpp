@@ -17,7 +17,7 @@ class SQL_API {
         SQL_API(SQL_API const&) = delete;
         SQL_API& operator=(SQL_API const&) = delete;
 
-        static std::shared_ptr<SQL_API> instance() {
+        static auto instance() -> std::shared_ptr<SQL_API> {
             static std::shared_ptr<SQL_API> s { new SQL_API() };
             return s;
         }
