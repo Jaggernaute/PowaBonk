@@ -16,5 +16,6 @@
         <file alias="connection.sql">../sql/connection.sql</file>
         <file alias="select-users.sql">../sql/select-users.sql</file>
         <file alias="search-user.sql">../sql/search-user.sql</file>
+        <file alias="seed.sql">seed.sql</file>
     </qresource>
 </RCC>
