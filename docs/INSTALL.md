@@ -45,7 +45,7 @@ cd PowaBonk/resources/
 ```
 create the dot-env file :
 ```sh
-cp .env.example .env
+cp ..env.example .env
 ```
 set all the variables :
 ```sh
