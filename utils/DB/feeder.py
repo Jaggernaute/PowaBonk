@@ -1,60 +1,97 @@
+import os
+import hashlib
 import random
+import secrets
+from typing import Dict, Optional
 
 import mysql.connector
 
-# grab connection info from env file
-import os
-import sys
+
+class DB:
+    __conn_info_slots = ('DBNAME', 'HOST', 'PASSWORD', 'USERNAME')
+
+    def __init__(self):
+        connection_info = self.get_connection_info()
+        if not connection_info:
+            return
+
+        try:
+            self.connection = mysql.connector.connect(
+                host=connection_info.get('HOST'),
+                user=connection_info.get('USERNAME'),
+                password=connection_info.get('PASSWORD'),
+                database=connection_info.get('DBNAME')
+            )
+
+        except mysql.connector.Error as err:
+            self.connection = None
+            print(
+                'Connection info is not complete, please check your config file'
+                ' and make sure it has all key from the .env.example file'
+            )
+            return
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.connection:
+            self.connection.close()
+
+    @staticmethod
+    def get_connection_info() -> Optional[Dict[str, str]]:
+        """Get connection info from env file."""
+        try:
+            with open('../../resources/.env') as f:
+                file_content = f.read()
+        except FileNotFoundError:
+            print(
+                'Please create a .env file with the following contents:'
+                '\nDB_HOST=<host>\nDB_USER=<user>'
+            )
+            return None
+
+        return dict(line.split('=') for line in file_content.splitlines())
+
+    def insert_user(self, first_name, last_name, badge, email, password):
+        """Insert a user into the database."""
+        cursor = self.connection.cursor()
+        cursor.execute(
+            'INSERT INTO utilisateurs(nom, prenom, mail, idBadge, password)'
+            'VALUES (%s, %s, %s, %s, %s)',
+            (first_name, last_name, badge, email, password)
+        )
+        self.connection.commit()
 
 
-def get_connection_info():
-    """
-    Get connection info from env file
-    """
-    try:
-        with open('../../resources/.env', 'r') as f:
-            lines = f.readlines()
-            for line in lines:
-                if 'HOST' in line:
-                    host = line.split('=')[1].strip()
-                if 'USERNAME' in line:
-                    user = line.split('=')[1].strip()
-                if 'PASSWORD' in line:
-                    password = line.split('=')[1].strip()
-                if 'DBNAME' in line:
-                    db = line.split('=')[1].strip()
-    except FileNotFoundError:
-        print('Please create a .env file with the following contents:')
-        print('DB_HOST=<host>')
-        print('DB_USER=<user>')
-    return [host, user, password, db]
+def sanitize_name(name: str) -> str:
+    return name.replace("'", " ").replace('"', ' ').strip()
 
 
-mydb = mysql.connector.connect(
-    host=get_connection_info()[0],
-    user=get_connection_info()[1],
-    password=get_connection_info()[2],
-    database=get_connection_info()[3]
-)
+def main():
+    os.system('ruby gen.rb')
 
-print(mydb)
-my_cursor = mydb.cursor()
+    with open('first_name_file') as f:
+        firstnames = map(sanitize_name, f.read().splitlines()[:30])
 
-os.system('ruby gen.rb')
+    with open('last_name_file') as f:
+        lastnames = map(sanitize_name, f.read().splitlines()[:30])
 
-# select 30 random name and first name from names.txt
-with open('first_name_file', 'r') as f:
-    first_names = f.readlines()
+    with DB() as db:
+        for c, (firstname, lastname) in enumerate(zip(firstnames, lastnames)):
+            mail = f"{firstname}.{lastname}@gmail.com"
+            password = secrets.token_hex(16)
 
-with open('last_name_file', 'r') as f:
-    last_names = f.readlines()
+            print(f"{mail} => {password}")
 
-for i in range(30):
-    sanitized_first_name = first_names[i].replace("'", " ").replace('"', ' ').strip()
-    sanitized_last_name = last_names[i].replace("'", " ").replace('"', ' ').strip()
-    mail = first_names[i].strip() + '.' + last_names[i].strip() + '@gmail.com'
-    id_badge = random.randint(1, 100000)
-    password_val = ''.join(random.choices('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', k=10))
-    sql = f"INSERT INTO utilisateurs (nom, prenom, mail, idBadge, password) VALUES ('{sanitized_first_name}', '{sanitized_last_name}', '{mail}', '{id_badge}', '{password_val}')"
-    my_cursor.execute(sql)
-    mydb.commit()
+            db.insert_user(
+                first_name=firstname,
+                last_name=lastname,
+                badge=random.randint(1, 100000),
+                email=mail,
+                password=hashlib.sha256(password.encode('utf-8')).hexdigest()
+            )
+
+
+if __name__ == '__main__':
+    main()
