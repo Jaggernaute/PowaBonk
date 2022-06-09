@@ -55,6 +55,7 @@ for i in range(30):
     mail = first_names[i].strip() + '.' + last_names[i].strip() + '@gmail.com'
     id_badge = random.randint(1, 100000)
     password_val = ''.join(random.choices('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', k=10))
-    sql = f"INSERT INTO utilisateurs (nom, prenom, mail, idBadge, password) VALUES ('{sanitized_first_name}', '{sanitized_last_name}', '{mail}', '{id_badge}', '{password_val}')"
+    sql = f"INSERT INTO utilisateurs (nom, prenom, mail, idBadge, password) " \
+          f"VALUES ('{sanitized_first_name}', '{sanitized_last_name}', '{mail}', '{id_badge}', '{password_val}')"
     my_cursor.execute(sql)
     mydb.commit()
