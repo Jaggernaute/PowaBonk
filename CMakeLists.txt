@@ -77,7 +77,7 @@ add_executable(
         include/Users.hpp
         src/Dashboard.hpp
         include/statement.hpp
-        utils/DB-seeder/seeder.cpp)
+        utils/DB/seeder.cpp)
 
 target_link_libraries(
         powa_bonk
