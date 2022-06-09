@@ -89,7 +89,7 @@ def main():
                 last_name=lastname,
                 badge=random.randint(1, 100000),
                 email=mail,
-                password=hashlib.sha256(password.encode('utf-8')).hexdigest()
+                password=hashlib.sha512(password.encode('utf-8')).hexdigest()
             )
 
 
