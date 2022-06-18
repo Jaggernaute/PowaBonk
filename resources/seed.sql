@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `utilisateurs`
     prenom         varchar(30)  NOT NULL,
     mail           varchar(128) NOT NULL,
     idBadge        varchar(50)  NOT NULL,
-    password       varchar(80)  NOT NULL,
+    password       varchar(256)  NOT NULL,
     `derniere-res` datetime     NULL,
     CONSTRAINT utilisateurs_nbadge_uindex
         UNIQUE (idBadge),

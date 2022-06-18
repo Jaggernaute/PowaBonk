@@ -23,7 +23,7 @@ class DB:
                 database=connection_info.get('DBNAME')
             )
 
-        except mysql.connector.Error as err:
+        except mysql.connector.Error:
             self.connection = None
             print(
                 'Connection info is not complete, please check your config file'
@@ -53,13 +53,13 @@ class DB:
 
         return dict(line.split('=') for line in file_content.splitlines())
 
-    def insert_user(self, first_name, last_name, badge, email, password):
+    def insert_user(self, first_name, last_name, badge, email, password, derniere_res):
         """Insert a user into the database."""
         cursor = self.connection.cursor()
         cursor.execute(
-            'INSERT INTO utilisateurs(nom, prenom, mail, idBadge, password)'
-            'VALUES (%s, %s, %s, %s, %s)',
-            (first_name, last_name, badge, email, password)
+            'INSERT INTO utilisateurs(nom, prenom, mail, idBadge, password, `derniere-res`)'
+            'VALUES (%s, %s, %s, %s, %s, %s)',
+            (first_name, last_name, badge, email, password, derniere_res)
         )
         self.connection.commit()
 
@@ -77,8 +77,11 @@ def main():
     with open('last_name_file') as f:
         lastnames = map(sanitize_name, f.read().splitlines()[:30])
 
+    with open('date_file') as f:
+        dates = f.read().splitlines()[:30]
+
     with DB() as db:
-        for c, (firstname, lastname) in enumerate(zip(firstnames, lastnames)):
+        for c, (firstname, lastname, dates) in enumerate(zip(firstnames, lastnames, dates)):
             mail = f"{firstname}.{lastname}@gmail.com"
             password = secrets.token_hex(16)
 
@@ -86,12 +89,13 @@ def main():
 
             db.insert_user(
                 first_name=firstname,
+
                 last_name=lastname,
                 badge=random.randint(1, 100000),
                 email=mail,
-                password=hashlib.sha512(password.encode('utf-8')).hexdigest()
+                password=hashlib.sha512(password.encode('utf-8')).hexdigest(),
+                derniere_res=dates
             )
-
 
 if __name__ == '__main__':
     main()
