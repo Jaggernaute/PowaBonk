@@ -6,10 +6,9 @@
 #define POWA_BONK_SQL_TESTS_HPP
 
 #include <QTest>
-#include <QtSql/QSqlDatabase>
+#include <QSqlDatabase>
 
-class SQL_tests: public QObject
-{
+class SQL_tests: public QObject {
 Q_OBJECT
 
 private slots:

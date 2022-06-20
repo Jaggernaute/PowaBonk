@@ -7,6 +7,7 @@
 
 #include "Users.hpp"
 #include <QDebug>
+#include <iostream>
 
 static auto search_user(const QString& search_string) -> QList<Users> {
     QList<Users> list;
@@ -14,18 +15,30 @@ static auto search_user(const QString& search_string) -> QList<Users> {
     QSqlQuery query;
     QString query_string;
 
+
     QFile file(":/search-user.sql");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         qDebug() << "Error opening file";
     }
 
     query_string = file.readAll();
-
+    query_string.replace("%search_string", search_string);
     query.prepare(query_string);
 
-    query.bindValue(":search_string", search_string);
+    QSqlQuery prepared_query = query;
+    qDebug() << "query: " << prepared_query.executedQuery();
+
     query.exec();
-    query.next();
+
+    if (!query.next()) {
+        qDebug() << "No results";
+        return list;
+    }
+
+    while (query.next()) {
+        qDebug() << "query.next(): " << query.next();
+    }
+
 
     Users user(
             query.value(1).toInt(),
@@ -33,7 +46,7 @@ static auto search_user(const QString& search_string) -> QList<Users> {
             query.value(3).toString(),
             query.value(4).toString(),
             query.value(5).toString(),
-            query.value(7).toDateTime()
+        query.value(6).toDateTime()
     );
     list.append(user);
     return list;
@@ -63,13 +76,13 @@ static auto get_user(int usr_count) -> QList<Users> {
 
 
     query_string = file.readAll();
+    query.prepare(query_string);
+    query.exec();
 
     for(int i = 1; i <= usr_count; i++) {
-        query.prepare(query_string);
-        query.exec();
         query.next();
 
-        if(query.next()) {
+        if(!query.next()) {
             break;
         }
 
@@ -86,7 +99,7 @@ static auto get_user(int usr_count) -> QList<Users> {
     return list;
 };
 
-static bool connection(const QString& username, const QString& password) {
+static auto connection(const QString& username, const QString& password) -> bool {
     SQL_API::instance();
     QSqlQuery query;
 
@@ -103,10 +116,7 @@ static bool connection(const QString& username, const QString& password) {
     query.exec();
     query.next();
 
-    if(query.value(0).toInt() == 0) {
-        return false;
-    }
-    return true;
+    return query.value(0).toInt() != 0;
 };
 
 #endif //POWA_BONK_STATEMENT_HPP

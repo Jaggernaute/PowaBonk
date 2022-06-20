@@ -15,6 +15,16 @@ find_package(${CMAKE_QT_VERSION}Test REQUIRED)
 
 add_library(coverage_config INTERFACE)
 
+find_package(
+        ${CMAKE_QT_VERSION} COMPONENTS
+        Test
+        Core
+        Gui
+        Sql
+        Widgets
+        REQUIRED
+)
+
 # log if the package was found
 if(${CMAKE_QT_VERSION}Test_FOUND)
   message(STATUS "${CMAKE_QT_VERSION}Test found")
@@ -34,7 +44,7 @@ add_executable(
         ../resources/resources.qrc
 )
 add_test(NAME sql_tests COMMAND sql_tests)
-target_link_libraries(sql_tests PRIVATE ${CMAKE_QT_VERSION}::Test common)
+target_link_libraries(sql_tests PRIVATE ${CMAKE_QT_VERSION}::Test common Qt5::Sql)
 
 add_executable(
         hash_tests

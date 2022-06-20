@@ -10,6 +10,8 @@
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QApplication>
+#include <QScreen>
+#include <QBitmap>
 #include "../include/Users.hpp"
 #include "../include/statement.hpp"
 
@@ -201,7 +203,7 @@ public:
                 &QPushButton::clicked,  [this]{
             for(const auto& usr : search_user(
                             search_bar->text()
-                            ).toList()) {
+                            )) {
                 qDebug() << usr.get_name();
                 qDebug() << usr.get_surname();
                 qDebug() << usr.get_email();
